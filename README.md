@@ -9,12 +9,7 @@
 * 在UI方面有一些小技巧可供参考
 
 ###屏幕截图
-![png1](https://github.com/gaowanli/PinGo/blob/master/Screenshots/1.png)
-![png2](https://github.com/gaowanli/PinGo/blob/master/Screenshots/2.png)
-![png3](https://github.com/gaowanli/PinGo/blob/master/Screenshots/3.png)
-![png4](https://github.com/gaowanli/PinGo/blob/master/Screenshots/4.png)
-![png5](https://github.com/gaowanli/PinGo/blob/master/Screenshots/5.png)
-![png6](https://github.com/gaowanli/PinGo/blob/master/Screenshots/6.png)
+![jpg](https://github.com/gaowanli/PinGo/blob/master/Screenshots.jpg) 
 
 ###已有功能
 * TabBar对应的几个控制器的首页展示功能
