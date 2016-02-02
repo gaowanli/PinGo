@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="RfK-Z2-ddV">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+    </dependencies>
+    <scenes>
+        <!--Discover Home Controller-->
+        <scene sceneID="WHY-V2-ijs">
+            <objects>
+                <viewController id="clx-z2-W0G" customClass="DiscoverHomeController" customModule="PinGo" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="6n8-Dm-q01"/>
+                        <viewControllerLayoutGuide type="bottom" id="Ldv-pl-sqn"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="kFJ-nd-SnC">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BJw-sg-xAd">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <connections>
+                                    <segue destination="ois-sp-LKD" kind="embed" id="Sg5-tr-Dkb"/>
+                                </connections>
+                            </containerView>
+                            <containerView hidden="YES" opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ukw-us-IjX">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <connections>
+                                    <segue destination="hVr-l2-bny" kind="embed" id="elo-i8-zCP"/>
+                                </connections>
+                            </containerView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="ukw-us-IjX" firstAttribute="height" secondItem="BJw-sg-xAd" secondAttribute="height" id="37v-6U-y1R"/>
+                            <constraint firstItem="ukw-us-IjX" firstAttribute="width" secondItem="BJw-sg-xAd" secondAttribute="width" id="Efa-Cp-sut"/>
+                            <constraint firstItem="ukw-us-IjX" firstAttribute="leading" secondItem="kFJ-nd-SnC" secondAttribute="leading" id="GyE-d5-L5H"/>
+                            <constraint firstAttribute="trailing" secondItem="BJw-sg-xAd" secondAttribute="trailing" id="OXz-6i-woR"/>
+                            <constraint firstItem="BJw-sg-xAd" firstAttribute="leading" secondItem="kFJ-nd-SnC" secondAttribute="leading" id="PDt-xu-rgN"/>
+                            <constraint firstItem="ukw-us-IjX" firstAttribute="top" secondItem="kFJ-nd-SnC" secondAttribute="top" id="SeL-pF-f6l"/>
+                            <constraint firstItem="Ldv-pl-sqn" firstAttribute="top" secondItem="ukw-us-IjX" secondAttribute="bottom" id="ds3-z7-HxL"/>
+                            <constraint firstItem="Ldv-pl-sqn" firstAttribute="top" secondItem="BJw-sg-xAd" secondAttribute="bottom" id="lUx-k8-KLs"/>
+                            <constraint firstAttribute="trailing" secondItem="ukw-us-IjX" secondAttribute="trailing" id="og2-uw-XhO"/>
+                            <constraint firstItem="BJw-sg-xAd" firstAttribute="top" secondItem="kFJ-nd-SnC" secondAttribute="top" id="shf-OX-wAA"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="37v-6U-y1R"/>
+                                <exclude reference="Efa-Cp-sut"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <navigationItem key="navigationItem" id="93O-zD-TAK"/>
+                    <connections>
+                        <outlet property="discoverContainerView" destination="BJw-sg-xAd" id="KQ4-Yd-Ttd"/>
+                        <outlet property="topicContainerView" destination="ukw-us-IjX" id="NSM-bL-sGe"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UxJ-pD-b1j" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1071" y="378"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="sxn-HB-biE">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="RfK-Z2-ddV" customClass="NavigationController" customModule="PinGo" customModuleProvider="target" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="yYv-Yd-P96">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="clx-z2-W0G" kind="relationship" relationship="rootViewController" id="TI8-Zj-lPZ"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kWY-G1-uHL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="419" y="378"/>
+        </scene>
+        <!--Discover-->
+        <scene sceneID="UBX-QL-j9X">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Discover" id="ois-sp-LKD" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MKu-kS-TZ8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1569.5" y="332"/>
+        </scene>
+        <!--Topic-->
+        <scene sceneID="36t-cG-S6t">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Topic" id="hVr-l2-bny" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WA1-M6-Dlh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1559.5" y="455"/>
+        </scene>
+    </scenes>
+</document>

@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="BigYoungMediumGB2.0.ttf">
+            <string>BigYoungMediumGB2.0</string>
+            <string>BigYoungMediumGB2.0</string>
+            <string>BigYoungMediumGB2.0</string>
+            <string>BigYoungMediumGB2.0</string>
+        </mutableArray>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="VisitorController" customModule="PinGo" customModuleProvider="target"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="VisitorHeaderView" customModule="PinGo" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="420.5" height="68"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kes-6R-4BH">
+                    <rect key="frame" x="134" y="0.0" width="152" height="68"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i9A-He-Wry">
+                            <rect key="frame" x="60" y="27.5" width="2" height="13.5"/>
+                            <constraints>
+                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="2" id="sNU-cC-2Ly"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="BigYoungMediumGB2.0" family="BigYoungMediumGB2.0" pointSize="13"/>
+                            <color key="textColor" red="0.99215686274509807" green="0.62352941176470589" blue="0.19607843137254902" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y72-bb-hDQ">
+                            <rect key="frame" x="150" y="27" width="2" height="14.5"/>
+                            <constraints>
+                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="2" id="wOG-uh-UD6"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="BigYoungMediumGB2.0" family="BigYoungMediumGB2.0" pointSize="13"/>
+                            <color key="textColor" red="0.98431372549019602" green="0.23137254901960785" blue="0.2627450980392157" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="今日访问量：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KoL-6U-AyJ">
+                            <rect key="frame" x="72" y="27" width="78" height="14"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="78" id="MLT-oR-AQU"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="BigYoungMediumGB2.0" family="BigYoungMediumGB2.0" pointSize="13"/>
+                            <color key="textColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="总访问量：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sjK-iY-MqB">
+                            <rect key="frame" x="0.0" y="27" width="60" height="13.5"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="60" id="waN-Be-cu7"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="BigYoungMediumGB2.0" family="BigYoungMediumGB2.0" pointSize="12"/>
+                            <color key="textColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="Y72-bb-hDQ" firstAttribute="leading" secondItem="KoL-6U-AyJ" secondAttribute="trailing" id="5cr-Fl-tYP"/>
+                        <constraint firstItem="i9A-He-Wry" firstAttribute="baseline" secondItem="sjK-iY-MqB" secondAttribute="baseline" id="7yq-3b-Xe1"/>
+                        <constraint firstItem="Y72-bb-hDQ" firstAttribute="leading" secondItem="KoL-6U-AyJ" secondAttribute="trailing" id="BXl-BD-WB1"/>
+                        <constraint firstItem="KoL-6U-AyJ" firstAttribute="leading" secondItem="i9A-He-Wry" secondAttribute="trailing" constant="10" id="Bgq-jy-aTw"/>
+                        <constraint firstItem="sjK-iY-MqB" firstAttribute="leading" secondItem="Kes-6R-4BH" secondAttribute="leading" id="DJU-lD-Oyv"/>
+                        <constraint firstItem="Y72-bb-hDQ" firstAttribute="baseline" secondItem="sjK-iY-MqB" secondAttribute="baseline" id="Ezm-lG-sA5"/>
+                        <constraint firstItem="i9A-He-Wry" firstAttribute="centerY" secondItem="Kes-6R-4BH" secondAttribute="centerY" id="L70-FV-kdU"/>
+                        <constraint firstItem="i9A-He-Wry" firstAttribute="leading" secondItem="sjK-iY-MqB" secondAttribute="trailing" id="N9G-Zv-f1Q"/>
+                        <constraint firstItem="Y72-bb-hDQ" firstAttribute="centerY" secondItem="Kes-6R-4BH" secondAttribute="centerY" id="Sl1-Wg-PWu"/>
+                        <constraint firstItem="KoL-6U-AyJ" firstAttribute="baseline" secondItem="sjK-iY-MqB" secondAttribute="baseline" id="e3c-By-c9d"/>
+                        <constraint firstItem="KoL-6U-AyJ" firstAttribute="leading" secondItem="i9A-He-Wry" secondAttribute="trailing" constant="10" id="kIm-9J-fLA"/>
+                        <constraint firstItem="sjK-iY-MqB" firstAttribute="centerY" secondItem="Kes-6R-4BH" secondAttribute="centerY" id="sJ0-Kx-dR7"/>
+                        <constraint firstAttribute="trailing" secondItem="Y72-bb-hDQ" secondAttribute="trailing" id="stR-fa-A6e"/>
+                        <constraint firstItem="i9A-He-Wry" firstAttribute="leading" secondItem="sjK-iY-MqB" secondAttribute="trailing" id="vkn-bT-oT1"/>
+                        <constraint firstItem="KoL-6U-AyJ" firstAttribute="centerY" secondItem="Kes-6R-4BH" secondAttribute="centerY" id="zJD-lZ-Iei"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="0.97647058823529409" green="0.97647058823529409" blue="0.97647058823529409" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstItem="Kes-6R-4BH" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="MHp-hd-PL0"/>
+                <constraint firstAttribute="trailing" secondItem="Kes-6R-4BH" secondAttribute="trailing" constant="79" id="NdS-VS-SrJ"/>
+                <constraint firstItem="Kes-6R-4BH" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="Vbf-QX-AUh"/>
+                <constraint firstItem="Kes-6R-4BH" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="edk-29-hju"/>
+                <constraint firstAttribute="bottom" secondItem="Kes-6R-4BH" secondAttribute="bottom" id="lyW-5d-X8q"/>
+                <constraint firstItem="Kes-6R-4BH" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="40" id="tmR-5T-SNk"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="NdS-VS-SrJ"/>
+                    <exclude reference="tmR-5T-SNk"/>
+                </mask>
+            </variation>
+            <connections>
+                <outlet property="visitorCountLabel" destination="i9A-He-Wry" id="WR3-S7-f6e"/>
+                <outlet property="vistorTodayLabel" destination="Y72-bb-hDQ" id="hBY-Sl-ek2"/>
+            </connections>
+            <point key="canvasLocation" x="155.25" y="74"/>
+        </view>
+    </objects>
+</document>

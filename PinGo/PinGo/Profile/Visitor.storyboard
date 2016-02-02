@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="B4f-cB-zJc">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="BigYoungMediumGB2.0.ttf">
+            <string>BigYoungMediumGB2.0</string>
+            <string>BigYoungMediumGB2.0</string>
+            <string>BigYoungMediumGB2.0</string>
+            <string>BigYoungMediumGB2.0</string>
+        </mutableArray>
+    </customFonts>
+    <scenes>
+        <!--谁看过我-->
+        <scene sceneID="dFf-hZ-vzI">
+            <objects>
+                <tableViewController title="谁看过我" id="B4f-cB-zJc" customClass="VisitorController" customModule="PinGo" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="133" sectionHeaderHeight="28" sectionFooterHeight="28" id="an8-V7-F5N">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <view key="tableFooterView" contentMode="scaleToFill" id="Lzt-u7-sDH">
+                            <rect key="frame" x="0.0" y="78" width="600" height="0.5"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </view>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="VisitorCell" rowHeight="50" id="cC9-6g-NoM" customClass="VisitorCell" customModule="PinGo" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="600" height="50"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cC9-6g-NoM" id="l9B-ud-fhW">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="49.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="cz0-0e-9d6" customClass="IBInspectableImageView" customModule="PinGo" customModuleProvider="target">
+                                            <rect key="frame" x="15" y="5" width="40" height="40"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="40" id="Wf7-J7-9Bc"/>
+                                                <constraint firstAttribute="width" constant="40" id="a60-nh-gfb"/>
+                                            </constraints>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="kCornerRadius">
+                                                    <real key="value" value="20"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KYf-Vr-AiT">
+                                            <rect key="frame" x="63" y="5" width="34.5" height="20"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="20" id="8Ga-UQ-zSj"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" name="BigYoungMediumGB2.0" family="BigYoungMediumGB2.0" pointSize="12"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rBt-cm-7IK" customClass="IBInspectableButton" customModule="PinGo" customModuleProvider="target">
+                                            <rect key="frame" x="63" y="30" width="30" height="15"/>
+                                            <color key="backgroundColor" red="0.9882352941176471" green="0.44705882352941179" blue="0.59607843137254901" alpha="1" colorSpace="calibratedRGB"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="30" id="qdT-bF-tTE"/>
+                                                <constraint firstAttribute="height" constant="15" id="zPi-WC-Fpq"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" name="BigYoungMediumGB2.0" family="BigYoungMediumGB2.0" pointSize="10"/>
+                                            <inset key="titleEdgeInsets" minX="2" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="kCornerRadius">
+                                                    <real key="value" value="2"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
+                                        </button>
+                                        <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fV5-f2-hd4" customClass="IBInspectableButton" customModule="PinGo" customModuleProvider="target">
+                                            <rect key="frame" x="98" y="30" width="40" height="15"/>
+                                            <color key="backgroundColor" red="0.59999999999999998" green="0.69803921568627447" blue="0.92549019607843142" alpha="1" colorSpace="calibratedRGB"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="15" id="2B0-Uw-EVz"/>
+                                                <constraint firstAttribute="width" constant="40" id="AfU-vT-B7B"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" name="BigYoungMediumGB2.0" family="BigYoungMediumGB2.0" pointSize="10"/>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="kCornerRadius">
+                                                    <real key="value" value="2"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
+                                        </button>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h9G-YL-5am">
+                                            <rect key="frame" x="561.5" y="33.5" width="23" height="8.5"/>
+                                            <fontDescription key="fontDescription" name="BigYoungMediumGB2.0" family="BigYoungMediumGB2.0" pointSize="8"/>
+                                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="h9G-YL-5am" firstAttribute="centerY" secondItem="fV5-f2-hd4" secondAttribute="centerY" id="6Y8-FI-dqG"/>
+                                        <constraint firstItem="cz0-0e-9d6" firstAttribute="top" secondItem="l9B-ud-fhW" secondAttribute="top" constant="5" id="93f-jC-tIX"/>
+                                        <constraint firstItem="fV5-f2-hd4" firstAttribute="leading" secondItem="rBt-cm-7IK" secondAttribute="trailing" constant="5" id="INQ-Xh-2jI"/>
+                                        <constraint firstItem="fV5-f2-hd4" firstAttribute="baseline" secondItem="rBt-cm-7IK" secondAttribute="baseline" id="N2f-he-cwM"/>
+                                        <constraint firstAttribute="trailing" secondItem="h9G-YL-5am" secondAttribute="trailing" constant="15" id="Pm3-2Q-sq4"/>
+                                        <constraint firstItem="cz0-0e-9d6" firstAttribute="leading" secondItem="l9B-ud-fhW" secondAttribute="leading" constant="15" id="ahe-PX-4uR"/>
+                                        <constraint firstItem="KYf-Vr-AiT" firstAttribute="leading" secondItem="cz0-0e-9d6" secondAttribute="trailing" constant="8" id="cob-6A-DdI"/>
+                                        <constraint firstItem="rBt-cm-7IK" firstAttribute="leading" secondItem="cz0-0e-9d6" secondAttribute="trailing" constant="8" id="dVa-L5-GEP"/>
+                                        <constraint firstItem="rBt-cm-7IK" firstAttribute="leading" secondItem="h9G-YL-5am" secondAttribute="trailing" constant="15" id="hgM-Sm-vHm"/>
+                                        <constraint firstItem="fV5-f2-hd4" firstAttribute="centerY" secondItem="rBt-cm-7IK" secondAttribute="centerY" id="lCd-NS-3M3"/>
+                                        <constraint firstItem="rBt-cm-7IK" firstAttribute="top" secondItem="KYf-Vr-AiT" secondAttribute="bottom" constant="5" id="qZu-rL-vfQ"/>
+                                        <constraint firstItem="KYf-Vr-AiT" firstAttribute="top" secondItem="cz0-0e-9d6" secondAttribute="top" id="rrN-Zf-cZw"/>
+                                    </constraints>
+                                    <variation key="default">
+                                        <mask key="constraints">
+                                            <exclude reference="hgM-Sm-vHm"/>
+                                        </mask>
+                                    </variation>
+                                </tableViewCellContentView>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="fV5-f2-hd4" secondAttribute="bottom" constant="114" id="F5r-ho-rEh"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="F5r-ho-rEh"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <outlet property="constellationButton" destination="fV5-f2-hd4" id="5IA-vD-gmb"/>
+                                    <outlet property="headIcon" destination="cz0-0e-9d6" id="ycL-ua-DfC"/>
+                                    <outlet property="nickNameLabel" destination="KYf-Vr-AiT" id="lyd-ta-TnV"/>
+                                    <outlet property="sexAgeButton" destination="rBt-cm-7IK" id="vUX-16-8EH"/>
+                                    <outlet property="visitorTimeLabel" destination="h9G-YL-5am" id="6Er-LS-GVR"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <sections/>
+                        <connections>
+                            <outlet property="dataSource" destination="B4f-cB-zJc" id="E5H-Gi-0pF"/>
+                            <outlet property="delegate" destination="B4f-cB-zJc" id="aXR-f0-jgi"/>
+                        </connections>
+                    </tableView>
+                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uoM-xF-utt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="726" y="36"/>
+        </scene>
+    </scenes>
+</document>

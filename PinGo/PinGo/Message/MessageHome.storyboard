@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vDw-dY-BjR">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+    </dependencies>
+    <scenes>
+        <!--私聊-->
+        <scene sceneID="bT0-wZ-UqG">
+            <objects>
+                <viewController id="vZZ-NF-8oq" customClass="MessageHomeController" customModule="PinGo" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="TQZ-8O-BjB"/>
+                        <viewControllerLayoutGuide type="bottom" id="sXt-yv-RQi"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="KlM-eL-uNB">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="32A-k8-mc3">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <animations/>
+                                <connections>
+                                    <segue destination="daV-br-fYZ" kind="embed" id="Uns-eI-8Kj"/>
+                                </connections>
+                            </containerView>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="32A-k8-mc3" secondAttribute="trailing" id="1lQ-dH-OAJ"/>
+                            <constraint firstItem="sXt-yv-RQi" firstAttribute="top" secondItem="32A-k8-mc3" secondAttribute="bottom" id="FH5-x4-g6C"/>
+                            <constraint firstItem="32A-k8-mc3" firstAttribute="top" secondItem="KlM-eL-uNB" secondAttribute="top" id="V9a-00-YXI"/>
+                            <constraint firstItem="32A-k8-mc3" firstAttribute="leading" secondItem="KlM-eL-uNB" secondAttribute="leading" id="sgI-ZI-gl7"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="私聊" id="klS-Hh-oN6"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4xm-u2-Vxu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="967" y="265"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="TA7-7S-fZn">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="vDw-dY-BjR" customClass="NavigationController" customModule="PinGo" customModuleProvider="target" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="HTo-L7-13u">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <animations/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="vZZ-NF-8oq" kind="relationship" relationship="rootViewController" id="LtL-ej-4tz"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hkv-m1-JuC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="307" y="265"/>
+        </scene>
+        <!--Chat-->
+        <scene sceneID="1yO-3Z-UaJ">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Chat" id="daV-br-fYZ" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gKB-Lq-vAR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1464.5" y="178"/>
+        </scene>
+    </scenes>
+</document>

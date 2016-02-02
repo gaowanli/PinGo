@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="BigYoungMediumGB2.0.ttf">
+            <string>BigYoungMediumGB2.0</string>
+            <string>BigYoungMediumGB2.0</string>
+        </mutableArray>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="DiscoverHeaderView" customModule="PinGo" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="495" height="174"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view autoresizesSubviews="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rh0-oo-Bxw">
+                    <rect key="frame" x="0.0" y="0.0" width="495" height="130"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="130" id="i4y-xn-Qpq"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8b7-9C-sF7">
+                    <rect key="frame" x="0.0" y="130" width="495" height="44"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zim-YN-zvw">
+                            <rect key="frame" x="0.0" y="0.0" width="247" height="44"/>
+                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <fontDescription key="fontDescription" name="BigYoungMediumGB2.0" family="BigYoungMediumGB2.0" pointSize="14"/>
+                            <inset key="titleEdgeInsets" minX="4" minY="0.0" maxX="0.0" maxY="0.0"/>
+                            <state key="normal" title="话题关注" image="topic_icon">
+                                <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="buttonClick:" destination="iN0-l3-epB" eventType="touchUpInside" id="LIS-Wj-EvU"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JJ7-Ch-udU">
+                            <rect key="frame" x="248" y="0.0" width="247" height="44"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <fontDescription key="fontDescription" name="BigYoungMediumGB2.0" family="BigYoungMediumGB2.0" pointSize="14"/>
+                            <inset key="titleEdgeInsets" minX="4" minY="0.0" maxX="0.0" maxY="0.0"/>
+                            <inset key="imageEdgeInsets" minX="4" minY="0.0" maxX="0.0" maxY="0.0"/>
+                            <state key="normal" title="活动精选" image="activity_icon">
+                                <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="buttonClick:" destination="iN0-l3-epB" eventType="touchUpInside" id="6H5-9w-3GO"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" red="0.88627450980392153" green="0.88627450980392153" blue="0.88627450980392153" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstItem="JJ7-Ch-udU" firstAttribute="leading" secondItem="Zim-YN-zvw" secondAttribute="trailing" constant="1" id="26R-kK-fmK"/>
+                        <constraint firstItem="JJ7-Ch-udU" firstAttribute="height" secondItem="Zim-YN-zvw" secondAttribute="height" id="2om-Pz-OAp"/>
+                        <constraint firstItem="JJ7-Ch-udU" firstAttribute="width" secondItem="Zim-YN-zvw" secondAttribute="width" id="AuM-WX-iKl"/>
+                        <constraint firstItem="Zim-YN-zvw" firstAttribute="top" secondItem="8b7-9C-sF7" secondAttribute="top" id="BlZ-QB-eXy"/>
+                        <constraint firstAttribute="trailing" secondItem="JJ7-Ch-udU" secondAttribute="trailing" id="QWL-aZ-dsZ"/>
+                        <constraint firstAttribute="height" constant="44" id="V7E-00-XLf"/>
+                        <constraint firstAttribute="bottom" secondItem="Zim-YN-zvw" secondAttribute="bottom" id="ZL4-Q6-pwr"/>
+                        <constraint firstItem="JJ7-Ch-udU" firstAttribute="top" secondItem="8b7-9C-sF7" secondAttribute="top" id="hCR-7L-EYc"/>
+                        <constraint firstItem="JJ7-Ch-udU" firstAttribute="leading" secondItem="Zim-YN-zvw" secondAttribute="trailing" constant="1" id="u0t-zy-pki"/>
+                        <constraint firstAttribute="bottom" secondItem="JJ7-Ch-udU" secondAttribute="bottom" id="vsX-ep-Ln9"/>
+                        <constraint firstItem="Zim-YN-zvw" firstAttribute="leading" secondItem="8b7-9C-sF7" secondAttribute="leading" id="zS4-Ca-DNo"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="rh0-oo-Bxw" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="1F2-bu-Rd1"/>
+                <constraint firstAttribute="trailing" secondItem="rh0-oo-Bxw" secondAttribute="trailing" id="8NI-eP-0fN"/>
+                <constraint firstAttribute="trailing" secondItem="8b7-9C-sF7" secondAttribute="trailing" id="Px9-tT-NDP"/>
+                <constraint firstItem="8b7-9C-sF7" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Tf5-og-1Dr"/>
+                <constraint firstItem="rh0-oo-Bxw" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="e1Z-Cg-UQh"/>
+                <constraint firstItem="8b7-9C-sF7" firstAttribute="top" secondItem="rh0-oo-Bxw" secondAttribute="bottom" id="ebh-KT-qJj"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="topView" destination="rh0-oo-Bxw" id="qpk-Hl-btq"/>
+            </connections>
+            <point key="canvasLocation" x="281.5" y="377"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="activity_icon" width="24" height="24"/>
+        <image name="topic_icon" width="24" height="24"/>
+    </resources>
+</document>
