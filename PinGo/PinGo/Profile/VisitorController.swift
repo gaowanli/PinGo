@@ -13,11 +13,13 @@ class VisitorController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        VisitorRecord.fetchVisitorRecord { (visitorRecordList) in
-            if visitorRecordList != nil {
-                self.dataList = visitorRecordList!
-                self.tableView.rowHeight = 50.0
-                self.tableView.reloadData()
+        VisitorRecord.fetchVisitorRecord { [weak self] (visitorRecordList) in
+            if let strongSelf = self {
+                if visitorRecordList != nil {
+                    strongSelf.dataList = visitorRecordList!
+                    strongSelf.tableView.rowHeight = 50.0
+                    strongSelf.tableView.reloadData()
+                }
             }
         }
     }

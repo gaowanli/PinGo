@@ -486,7 +486,6 @@
 				TargetAttributes = {
 					856E40A61C48BFC500216E9C = {
 						CreatedOnToolsVersion = 7.2;
-						DevelopmentTeam = CRKLG6LB5U;
 					};
 					856E40BA1C48BFC500216E9C = {
 						CreatedOnToolsVersion = 7.2;

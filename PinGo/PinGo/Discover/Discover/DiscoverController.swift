@@ -27,16 +27,20 @@ class DiscoverController: UIViewController {
         collectionView.contentInset = UIEdgeInsetsMake(kHeaderViewHeight, 0, 0, 0)
         collectionView.insertSubview(headerView, atIndex: 0)
         
-        Banner.fetchBannerList(.Subject) { (bannerList) in
-            if bannerList != nil {
-                self.headerView.bannerList = bannerList
+        Banner.fetchBannerList(.Subject) { [weak self] (bannerList) in
+            if let strongSelf = self {
+                if bannerList != nil {
+                    strongSelf.headerView.bannerList = bannerList
+                }
             }
         }
         
-        SubjectInfo.fetchSubjectInfoList { (s) in
-            if s != nil {
-                self.subjectInfoListArray = s
-                self.collectionView.reloadData()
+        SubjectInfo.fetchSubjectInfoList { [weak self] (s) in
+            if let strongSelf = self {
+                if s != nil {
+                    strongSelf.subjectInfoListArray = s
+                    strongSelf.collectionView.reloadData()
+                }
             }
         }
     }

@@ -24,15 +24,19 @@ class TopicController: UIViewController {
         tableViewHeaderView.addSubview(headerView!)
         tableView.rowHeight = 170.0
         
-        Banner.fetchBannerList(.Square) { (bannerList) in
-            if bannerList != nil {
-                self.headerView.bannerList = bannerList
+        Banner.fetchBannerList(.Square) { [weak self] (bannerList) in
+            if let strongSelf = self {
+                if bannerList != nil {
+                    strongSelf.headerView.bannerList = bannerList
+                }
             }
         }
         
-        TopicInfo.fetchTopicInfoList { (isEnd, sortValue, topicInfoList) in
-            self.dataList = topicInfoList!
-            self.tableView.reloadData()
+        TopicInfo.fetchTopicInfoList { [weak self] (isEnd, sortValue, topicInfoList) in
+            if let strongSelf = self {
+                strongSelf.dataList = topicInfoList!
+                strongSelf.tableView.reloadData()
+            }
         }
     }
     

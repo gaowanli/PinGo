@@ -49,22 +49,24 @@ class HomeController: UIViewController {
             sortValue = baseSortValue
         }
         
-        TopicInfo.fetchTopicInfoList(queryFollowData, order: 1, sortValue: sortValue) { (isEnd, sortValue, topicInfoList) in
-            if topicInfoList?.count > 0 {
-                self.baseSortValue = sortValue
-                if query == .New {
-                    self.dataList = topicInfoList!
-                }else {
-                    self.dataList.appendContentsOf(topicInfoList!)
+        TopicInfo.fetchTopicInfoList(queryFollowData, order: 1, sortValue: sortValue) { [weak self] (isEnd, sortValue, topicInfoList) in
+            if let strongSelf = self {
+                if topicInfoList?.count > 0 {
+                    strongSelf.baseSortValue = sortValue
+                    if query == .New {
+                        strongSelf.dataList = topicInfoList!
+                    }else {
+                        strongSelf.dataList.appendContentsOf(topicInfoList!)
+                    }
+                    if strongSelf.queryFollowData {
+                        strongSelf.followDataList = strongSelf.dataList
+                    }else {
+                        strongSelf.topDataList = strongSelf.dataList
+                    }
                 }
-                if self.queryFollowData {
-                    self.followDataList = self.dataList
-                }else {
-                    self.topDataList = self.dataList
-                }
+                strongSelf.leftRefreshView.endRefresh()
+                strongSelf.collectionView?.reloadData()
             }
-            self.leftRefreshView.endRefresh()
-            self.collectionView?.reloadData()
         }
     }
     
