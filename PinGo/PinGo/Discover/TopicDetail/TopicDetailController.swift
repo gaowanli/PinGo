@@ -118,10 +118,10 @@ extension TopicDetailController: UICollectionViewDelegate {
     func scrollViewDidScroll(scrollView: UIScrollView) {
         let offset = scrollView.contentOffset
         
-        if offset.y <= 0  {
+        if offset.y <= -(kHeaderViewHeight - kNavBarHeight) {
             setNavigationBarAlpha(0)
         }else {
-            setNavigationBarAlpha(offset.y / 64.0)
+            setNavigationBarAlpha(offset.y / (kHeaderViewHeight - kNavBarHeight))
         }
         
         if offset.y < kHeaderViewHeight {
