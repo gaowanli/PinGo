@@ -26,7 +26,8 @@ class SubjectInfo: NSObject {
     var isOfficial: Int = 0
     var readCnt: Int = 0
     
-    typealias subjectInfoCompletion = (subjectInfoListArray: [[SubjectInfo]]?) -> ()
+    typealias subjectInfoListCompletion = (subjectInfoListArray: [[SubjectInfo]]?) -> ()
+    typealias subjectInfoCompletion     = (subjectInfo: SubjectInfo?, managerUserList: [User]?) -> ()
     
     init(dict: [String: AnyObject]?) {
         super.init()
@@ -52,7 +53,7 @@ class SubjectInfo: NSObject {
         
     }
     
-    class func fetchSubjectInfoList(completion: subjectInfoCompletion) {
+    class func fetchSubjectInfoList(completion: subjectInfoListCompletion) {
         let url = "\(kDISCOVER_SUBJECTINFO_LIST_URL)?\(kAPI_PEERID)&\(kAPI_OS)&\(kAPI_USERID)&\(kAPI_SESSION_TOKEN)&\(kAPI_CHANNELID)&\(kAPI_PRODUCTID)&\(kAPI_VERSION)&\(kAPI_SYSVERSION)&\(kAPI_SESSION_ID)&\(kAPI_VERSION_CODE)&key=3E21B8BF085CC3287E84A534EACA9DD7"
         
         NetworkTool.requestJSON(.GET, URLString: url) { (response) in
@@ -75,4 +76,26 @@ class SubjectInfo: NSObject {
         }
     }
     
+    class func fetchSubjectInfo(subjectID subjectID: Int, completion: subjectInfoCompletion) {
+        let url = "http://api.impingo.me/subject/getSubject?peerID=6EDEE890B4E5&os=ios&userID=1404034&sessionToken=cce76093c4&channelID=App%20Store&productID=com.joyodream.pingo&version=3.7&sysVersion=9.2.1&subjectID=343887&sessionID=e5c8c1b3e8153e78ab&versionCode=15&key=FD86BF9762791F118EE6E5CDB501B756"
+        
+        NetworkTool.requestJSON(.GET, URLString: url) { (response) in
+            if response?.rtn == "0" {
+                if let data = response?.data {
+                    if let dict0 = data["subjectInfo"] as? [String: AnyObject] {
+                        var managerUserList = [User]()
+                        for dict1 in dict0["managerUserInfoList"] as! [AnyObject] {
+                            managerUserList.append(User(dict: dict1 as? [String: AnyObject]))
+                        }
+                        completion(subjectInfo: SubjectInfo(dict: dict0), managerUserList: managerUserList)
+                    }else {
+                        completion(subjectInfo: nil, managerUserList: nil)
+                    }
+                }
+            }else {
+                debugPrint("error:\(response?.codeMsg)")
+                completion(subjectInfo: nil, managerUserList: nil)
+            }
+        }
+    }
 }

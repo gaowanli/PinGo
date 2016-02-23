@@ -16,7 +16,7 @@ class ImageCarouselView: UIView {
     @IBOutlet private weak var layout: UICollectionViewFlowLayout!
     @IBOutlet private weak var pageControl: UIPageControl!
     
-    private var kNumberOfSections    = 0
+    private var kNumberOfSections = 0
     
     private var timer: NSTimer?
     

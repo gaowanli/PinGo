@@ -10,6 +10,10 @@ import UIKit
 
 extension String {
     
+    static func size(withText text: String, withFont font: UIFont, andMaxSize maxSize: CGSize) -> CGSize {
+        return text.boundingRectWithSize(maxSize, options: .UsesLineFragmentOrigin, attributes: [ NSFontAttributeName: font ], context: nil).size
+    }
+    
     /**
      根据日期字符串计算年龄
      

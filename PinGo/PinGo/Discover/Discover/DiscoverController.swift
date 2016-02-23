@@ -27,7 +27,7 @@ class DiscoverController: UIViewController {
         collectionView.contentInset = UIEdgeInsetsMake(kHeaderViewHeight, 0, 0, 0)
         collectionView.insertSubview(headerView, atIndex: 0)
         
-        Banner.fetchBannerList(.Subject) { [weak self] (bannerList) in
+        Banner.fetchBannerList(type: .Subject) { [weak self] (bannerList) in
             if let strongSelf = self {
                 if bannerList != nil {
                     strongSelf.headerView.bannerList = bannerList
@@ -48,8 +48,9 @@ class DiscoverController: UIViewController {
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         
-        headerView.frame = CGRectMake(0, -kHeaderViewHeight, CGRectGetWidth(self.view.bounds), kHeaderViewHeight)
-        
+        dispatch_async(dispatch_get_main_queue()) { () in
+            self.headerView.frame = CGRectMake(0, -kHeaderViewHeight, CGRectGetWidth(self.view.bounds), kHeaderViewHeight)
+        }
         let width = (CGRectGetWidth(view.bounds) - 3 * layout.minimumInteritemSpacing) * 0.5
         let height = width * 3.0 / 4.0
         layout.itemSize = CGSizeMake(width, height)
@@ -107,5 +108,17 @@ extension DiscoverController: UICollectionViewDelegate {
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
         return CGSizeMake(CGRectGetWidth(collectionView.bounds), 40)
+    }
+}
+
+extension DiscoverController {
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if let cell = sender as? DiscoverCell {
+            if let toVC = segue.destinationViewController as? TopicDetailController  {
+                toVC.subjectID = cell.subjectInfo?.subjectID
+                toVC.title = cell.subjectInfo?.title
+            }
+        }
     }
 }

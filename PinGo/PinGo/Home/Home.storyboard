@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="YPL-er-vwk">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="YPL-er-vwk">
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -27,7 +26,6 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="hgK-KM-JHg">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <animations/>
                     </navigationBar>
                     <connections>
                         <segue destination="P8H-de-UVC" kind="relationship" relationship="rootViewController" id="WON-uk-3Gz"/>
@@ -35,7 +33,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kVp-qv-0eB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-383" y="-432"/>
+            <point key="canvasLocation" x="-215" y="-1592"/>
         </scene>
         <!--Home Controller-->
         <scene sceneID="hdy-sm-2TQ">
@@ -50,12 +48,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="home_bg" translatesAutoresizingMaskIntoConstraints="NO" id="74o-OM-gGL">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                                <animations/>
+                                <rect key="frame" x="0.0" y="0.0" width="610" height="600"/>
                             </imageView>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" indicatorStyle="white" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="SCh-cm-Kfw">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" indicatorStyle="white" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="SCh-cm-Kfw">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                                <animations/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="30" minimumInteritemSpacing="0.0" id="NTN-jw-Fhx">
                                     <size key="itemSize" width="373" height="395"/>
@@ -65,7 +61,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="homeCell" id="R1V-xJ-zdl" customClass="HomeCollectionViewCell" customModule="PinGo" customModuleProvider="target">
-                                        <rect key="frame" x="15" y="103" width="373" height="395"/>
+                                        <rect key="frame" x="15" y="102.5" width="373" height="395"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="373" height="395"/>
@@ -73,11 +69,9 @@
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5jH-EN-dkM" userLabel="bg">
                                                     <rect key="frame" x="0.0" y="0.0" width="373" height="299"/>
-                                                    <animations/>
                                                 </imageView>
                                                 <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SKO-42-CzW" userLabel="head" customClass="IBInspectableButton" customModule="PinGo" customModuleProvider="target">
                                                     <rect key="frame" x="15" y="15" width="50" height="50"/>
-                                                    <animations/>
                                                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="50" id="DgL-Cx-P9V"/>
@@ -91,7 +85,6 @@
                                                 </button>
                                                 <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DaD-m4-pws" userLabel="icon">
                                                     <rect key="frame" x="50" y="49" width="16" height="16"/>
-                                                    <animations/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="16" id="SJG-Y7-v9h"/>
                                                         <constraint firstAttribute="height" constant="16" id="waT-l6-uR3"/>
@@ -99,7 +92,6 @@
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iPk-Pb-4W2" customClass="IBInspectableButton" customModule="PinGo" customModuleProvider="target">
                                                     <rect key="frame" x="15" y="263" width="57" height="25"/>
-                                                    <animations/>
                                                     <color key="backgroundColor" red="0.098039217289999994" green="0.098039217289999994" blue="0.098039217289999994" alpha="0.80000000000000004" colorSpace="calibratedRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="25" id="ZxF-Tb-abf"/>
@@ -111,10 +103,12 @@
                                                             <real key="value" value="3"/>
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
+                                                    <connections>
+                                                        <action selector="buttonClick:" destination="R1V-xJ-zdl" eventType="touchUpInside" id="cHG-Mp-8Xa"/>
+                                                    </connections>
                                                 </button>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xaZ-cj-Fnp" userLabel="space">
                                                     <rect key="frame" x="333" y="299" width="2" height="10"/>
-                                                    <animations/>
                                                     <color key="backgroundColor" red="0.76470588240000004" green="0.76470588240000004" blue="0.76470588240000004" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="10" id="Beq-iY-IaZ"/>
@@ -123,7 +117,6 @@
                                                 </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="为何会有这么帅的人！！为何会有这么帅的人！！为何会有这么帅的人！！为何会有这么帅的人！！为何会有这么帅的人！！" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yVJ-qi-jd9" userLabel="describe">
                                                     <rect key="frame" x="15" y="314" width="286" height="45"/>
-                                                    <animations/>
                                                     <fontDescription key="fontDescription" name="BigYoungMediumGB2.0" family="BigYoungMediumGB2.0" pointSize="14"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -133,27 +126,23 @@
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="88月" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yl5-p4-NUC" userLabel="month">
                                                             <rect key="frame" x="3" y="0.0" width="30" height="13"/>
-                                                            <animations/>
                                                             <fontDescription key="fontDescription" name="BigYoungMediumGB2.0" family="BigYoungMediumGB2.0" pointSize="12"/>
                                                             <color key="textColor" red="0.84313725490000002" green="0.84313725490000002" blue="0.84313725490000002" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="88" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8bD-Ry-ihB" userLabel="day">
-                                                            <rect key="frame" x="5" y="13" width="26" height="18"/>
-                                                            <animations/>
+                                                            <rect key="frame" x="6" y="13" width="26" height="18"/>
                                                             <fontDescription key="fontDescription" name="BigYoungMediumGB2.0" family="BigYoungMediumGB2.0" pointSize="17"/>
                                                             <color key="textColor" red="0.7019608021" green="0.7019608021" blue="0.7019608021" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="8888" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q7S-jm-eMA" userLabel="year">
-                                                            <rect key="frame" x="0.0" y="31" width="36" height="13"/>
-                                                            <animations/>
+                                                            <rect key="frame" x="1" y="31" width="36" height="13"/>
                                                             <fontDescription key="fontDescription" name="BigYoungMediumGB2.0" family="BigYoungMediumGB2.0" pointSize="12"/>
                                                             <color key="textColor" red="0.84313725490000002" green="0.84313725490000002" blue="0.84313725490000002" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
-                                                    <animations/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="36" id="fEO-pf-SBA"/>
                                                         <constraint firstAttribute="height" constant="44" id="oXm-de-pGy"/>
@@ -162,9 +151,8 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uAT-EP-ycJ" userLabel="toolbar" customClass="ToolbarView" customModule="PinGo" customModuleProvider="target">
                                                     <rect key="frame" x="15" y="351" width="343" height="44"/>
                                                     <subviews>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gEM-PI-aOE">
+                                                        <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gEM-PI-aOE">
                                                             <rect key="frame" x="0.0" y="1" width="55" height="43"/>
-                                                            <animations/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="43" id="Z2f-uo-Knw"/>
                                                             </constraints>
@@ -174,12 +162,11 @@
                                                                 <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                             </state>
                                                             <connections>
-                                                                <action selector="chatButtonClick:" destination="R1V-xJ-zdl" eventType="touchUpInside" id="f0O-wR-Xjo"/>
+                                                                <action selector="buttonClick:" destination="R1V-xJ-zdl" eventType="touchUpInside" id="WMl-Nf-1rS"/>
                                                             </connections>
                                                         </button>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tob-9q-vGm">
+                                                        <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tob-9q-vGm">
                                                             <rect key="frame" x="70" y="1" width="68" height="43"/>
-                                                            <animations/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="43" id="NWv-jl-USy"/>
                                                                 <constraint firstAttribute="width" constant="68" id="tHf-m3-9iR"/>
@@ -190,12 +177,11 @@
                                                                 <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                             </state>
                                                             <connections>
-                                                                <action selector="commentButtonClick:" destination="R1V-xJ-zdl" eventType="touchUpInside" id="DJt-8D-q7V"/>
+                                                                <action selector="buttonClick:" destination="R1V-xJ-zdl" eventType="touchUpInside" id="cn7-Hp-1la"/>
                                                             </connections>
                                                         </button>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="shc-Yw-H90">
+                                                        <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="shc-Yw-H90">
                                                             <rect key="frame" x="275" y="1" width="68" height="43"/>
-                                                            <animations/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="68" id="1sd-0c-fwb"/>
                                                             </constraints>
@@ -205,11 +191,10 @@
                                                                 <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                             </state>
                                                             <connections>
-                                                                <action selector="starButtonClick:" destination="R1V-xJ-zdl" eventType="touchUpInside" id="pJ9-uO-DLB"/>
+                                                                <action selector="buttonClick:" destination="R1V-xJ-zdl" eventType="touchUpInside" id="jpL-Wv-e61"/>
                                                             </connections>
                                                         </button>
                                                     </subviews>
-                                                    <animations/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="44" id="1fe-nQ-XXZ"/>
@@ -223,10 +208,8 @@
                                                     </constraints>
                                                 </view>
                                             </subviews>
-                                            <animations/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
-                                        <animations/>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstItem="DaD-m4-pws" firstAttribute="trailing" secondItem="SKO-42-CzW" secondAttribute="trailing" id="0us-dq-g6d"/>
@@ -310,10 +293,9 @@
                                 </connections>
                             </collectionView>
                         </subviews>
-                        <animations/>
                         <constraints>
                             <constraint firstItem="74o-OM-gGL" firstAttribute="top" secondItem="E8o-Xi-pR7" secondAttribute="top" id="1N0-au-7rc"/>
-                            <constraint firstAttribute="trailing" secondItem="74o-OM-gGL" secondAttribute="trailing" id="Fcc-SM-tDE"/>
+                            <constraint firstAttribute="trailing" secondItem="74o-OM-gGL" secondAttribute="trailing" constant="-10" id="Fcc-SM-tDE"/>
                             <constraint firstItem="SCh-cm-Kfw" firstAttribute="top" secondItem="E8o-Xi-pR7" secondAttribute="top" id="SMA-ij-bud"/>
                             <constraint firstItem="SCh-cm-Kfw" firstAttribute="leading" secondItem="E8o-Xi-pR7" secondAttribute="leading" id="UnW-IO-BkD"/>
                             <constraint firstAttribute="trailing" secondItem="SCh-cm-Kfw" secondAttribute="trailing" id="X5g-AJ-pIz"/>
@@ -329,11 +311,20 @@
                     <connections>
                         <outlet property="collectionView" destination="SCh-cm-Kfw" id="JiW-05-9YZ"/>
                         <outlet property="layout" destination="NTN-jw-Fhx" id="eV4-pV-GFx"/>
+                        <segue destination="SpU-qS-cA0" kind="show" identifier="home2TopicDetail" id="bYQ-ga-NMg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="i94-Na-IkR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="427" y="-432"/>
+            <point key="canvasLocation" x="731" y="-1608"/>
+        </scene>
+        <!--TopicDetail-->
+        <scene sceneID="AFJ-I3-yg0">
+            <objects>
+                <viewControllerPlaceholder storyboardName="TopicDetail" id="SpU-qS-cA0" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Pns-Qn-fmN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1289" y="-1667"/>
         </scene>
     </scenes>
     <resources>

@@ -9,7 +9,8 @@
 import UIKit
 
 private let kCellReuseIdentifier = "homeCell"
-private let kCellInsets = UIEdgeInsetsMake(15, 15, 15, 15)
+private let kCellInsets          = UIEdgeInsetsMake(15, 15, 15, 15)
+private let kToTopicDetailSegue  = "home2TopicDetail"
 
 class HomeController: UIViewController {
     
@@ -49,7 +50,7 @@ class HomeController: UIViewController {
             sortValue = baseSortValue
         }
         
-        TopicInfo.fetchTopicInfoList(queryFollowData, order: 1, sortValue: sortValue) { [weak self] (isEnd, sortValue, topicInfoList) in
+        TopicInfo.fetchTopicInfoList(isFollow: queryFollowData, order: 1, sortValue: sortValue) { [weak self] (isEnd, sortValue, topicInfoList) in
             if let strongSelf = self {
                 if topicInfoList?.count > 0 {
                     strongSelf.baseSortValue = sortValue
@@ -108,6 +109,7 @@ extension HomeController: UICollectionViewDataSource {
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(kCellReuseIdentifier, forIndexPath: indexPath) as! HomeCollectionViewCell
+        cell.delegate = self
         cell.topiInfo = dataList[indexPath.row]
         return cell
     }
@@ -124,5 +126,49 @@ extension HomeController: TopMenuDelegate {
             return
         }
         loadData()
+    }
+}
+
+extension HomeController: HomeCollectionViewCellDelegate {
+    
+    func homeCollectionViewCell(cell: HomeCollectionViewCell, didClickButton button: UIButton, withButtonType btnType: HomeCollectionViewCellButtonType, withTopiInfo topiInfo: TopicInfo) {
+        switch btnType {
+        case .Tag:
+            cellDidClickTagButton(topiInfo)
+        case .Chat:
+            cellDidClickChatButton(topiInfo)
+        case .Comment:
+            cellDidClickCommentButton(topiInfo)
+        case .Star:
+            cellDidClickStarButton(topiInfo)
+        }
+    }
+    
+    private func cellDidClickTagButton(topiInfo: TopicInfo) {
+        performSegueWithIdentifier(kToTopicDetailSegue, sender: topiInfo)
+    }
+    
+    private func cellDidClickChatButton(topiInfo: TopicInfo) {
+        
+    }
+    
+    private func cellDidClickCommentButton(topiInfo: TopicInfo) {
+        
+    }
+    
+    private func cellDidClickStarButton(topiInfo: TopicInfo) {
+        
+    }
+}
+
+extension HomeController {
+
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == kToTopicDetailSegue {
+            if let toVC = segue.destinationViewController as? TopicDetailController  {
+                toVC.subjectID = (sender as! TopicInfo).subjectID
+                toVC.title = (sender as! TopicInfo).subjectTitle
+            }
+        }
     }
 }

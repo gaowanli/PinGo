@@ -34,4 +34,14 @@ import UIKit
             layer.masksToBounds = true
         }
     }
+    @IBInspectable var kCanHighlight: Bool = true
+    
+    override var highlighted: Bool {
+        get {
+            return super.highlighted
+        }
+        set {
+            super.highlighted = kCanHighlight
+        }
+    }
 }

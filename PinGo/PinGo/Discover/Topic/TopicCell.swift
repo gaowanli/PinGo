@@ -25,7 +25,9 @@ class TopicCell: UITableViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        headerView.frame = topView.bounds
+        dispatch_async(dispatch_get_main_queue()) { () in
+            self.headerView.frame = self.topView.bounds
+        }
         
         let height = CGRectGetHeight(collectionView.bounds)
         layout.itemSize = CGSizeMake(height, height)

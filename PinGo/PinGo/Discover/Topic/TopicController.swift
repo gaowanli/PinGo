@@ -24,7 +24,7 @@ class TopicController: UIViewController {
         tableViewHeaderView.addSubview(headerView!)
         tableView.rowHeight = 170.0
         
-        Banner.fetchBannerList(.Square) { [weak self] (bannerList) in
+        Banner.fetchBannerList(type: .Square) { [weak self] (bannerList) in
             if let strongSelf = self {
                 if bannerList != nil {
                     strongSelf.headerView.bannerList = bannerList

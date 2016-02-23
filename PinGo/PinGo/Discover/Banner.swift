@@ -30,9 +30,9 @@ class Banner: NSObject {
         setValuesForKeysWithDictionary(dict!)
     }
     
-    class func fetchBannerList(type: BannerQueryType, completion: bannerCompletion) {
+    class func fetchBannerList(type type: BannerQueryType, completion: bannerCompletion) {
         let page = (type == .Subject ? "subject" : "square")
-        let key = (type == .Subject ? "0F69CE76B34BECEA8AFA1F95BE0DE9F1" : "10556BA206745BB16DD260F05CDBB9C2")
+        let key = (type == .Subject ? "71E9EDFA30D38D95664AF805400324E1" : "093A511B21DC549B1F31F700C8A0400C")
         
         let url = "\(kDISCOVER_BANNER_LIST_URL)?\(kAPI_PEERID)&\(kAPI_OS)&\(kAPI_USERID)&\(kAPI_SESSION_TOKEN)&\(kAPI_CHANNELID)&\(kAPI_PRODUCTID)&\(kAPI_VERSION)&\(kAPI_SYSVERSION)&page=\(page)&\(kAPI_SESSION_ID)&\(kAPI_VERSION_CODE)&key=\(key)"
         

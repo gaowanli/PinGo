@@ -22,7 +22,7 @@ class Initialization: NSObject {
         navBar.tintColor = UIColor.whiteColor()
         
         navBar.titleTextAttributes = [
-            NSFontAttributeName: UIFont.fontWithSize(16),
+            NSFontAttributeName: kNavigationBarFont,
             NSForegroundColorAttributeName: UIColor.whiteColor()
         ]
      

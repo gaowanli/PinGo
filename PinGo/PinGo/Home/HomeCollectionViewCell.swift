@@ -9,6 +9,26 @@
 import UIKit
 import Kingfisher
 
+enum HomeCollectionViewCellButtonType: Int {
+    case Tag     // tag
+    case Chat    // 私聊
+    case Comment // 评论
+    case Star    // star
+}
+
+protocol HomeCollectionViewCellDelegate: NSObjectProtocol {
+    
+    /**
+     点击了某个按钮
+     
+     - parameter cell:     cell
+     - parameter button:   按钮
+     - parameter btnType:  按钮类型
+     - parameter topiInfo: 数据模型
+     */
+    func homeCollectionViewCell(cell: HomeCollectionViewCell, didClickButton button: UIButton, withButtonType btnType: HomeCollectionViewCellButtonType, withTopiInfo topiInfo: TopicInfo)
+}
+
 class HomeCollectionViewCell: UICollectionViewCell {
     
     /// 背景图片
@@ -33,6 +53,8 @@ class HomeCollectionViewCell: UICollectionViewCell {
     @IBOutlet private weak var commentButton: UIButton!
     /// star按钮
     @IBOutlet private weak var starButton: UIButton!
+    
+    weak var delegate: HomeCollectionViewCellDelegate?
     
     var topiInfo: TopicInfo? {
         didSet {
@@ -108,18 +130,10 @@ class HomeCollectionViewCell: UICollectionViewCell {
         layer.masksToBounds = true
     }
     
-    /// 私聊按钮点击事件
-    @IBAction func chatButtonClick(sender: UIButton) {
+    /// 按钮点击事件
+    @IBAction func buttonClick(sender: UIButton) {
+        delegate?.homeCollectionViewCell(self, didClickButton: sender, withButtonType: HomeCollectionViewCellButtonType(rawValue: sender.tag)!, withTopiInfo: topiInfo!)
     }
-    
-    /// 评论按钮点击事件
-    @IBAction func commentButtonClick(sender: UIButton) {
-    }
-    
-    /// star按钮点击事件
-    @IBAction func starButtonClick(sender: UIButton) {
-    }
-    
 }
 
 class ToolbarView: UIView {

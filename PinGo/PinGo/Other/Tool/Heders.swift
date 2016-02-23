@@ -19,6 +19,7 @@ let kScreenHeight          = CGRectGetHeight(UIScreen.mainScreen().bounds)
 let kAppearanceColor       = UIColor.colorWithRGBA(250, G: 60, B: 67)
 /// 主要的字体
 let kMainFont              = UIFont.fontWithSize(15.0)
+let kNavigationBarFont     = UIFont.fontWithSize(16)
 let kCalendar              = NSCalendar.currentCalendar()
 let kDateFormatter         = NSDateFormatter()
 

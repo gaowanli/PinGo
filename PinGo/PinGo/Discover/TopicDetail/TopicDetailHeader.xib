@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="BigYoungMediumGB2.0.ttf">
+            <string>BigYoungMediumGB2.0</string>
+            <string>BigYoungMediumGB2.0</string>
+            <string>BigYoungMediumGB2.0</string>
+            <string>BigYoungMediumGB2.0</string>
+        </mutableArray>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionReusableView autoresizesSubviews="NO" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="8lR-Hj-2wB" customClass="TopicDetailHeaderView" customModule="PinGo" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="507" height="255"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Bdw-Q9-zGw">
+                    <rect key="frame" x="0.0" y="0.0" width="507" height="255"/>
+                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                </imageView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GY7-9E-lB0">
+                    <rect key="frame" x="0.0" y="220" width="507" height="35"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="话题成员" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hUc-vS-R0v">
+                            <rect key="frame" x="10" y="0.0" width="56" height="35"/>
+                            <fontDescription key="fontDescription" name="BigYoungMediumGB2.0" family="BigYoungMediumGB2.0" pointSize="14"/>
+                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FTH-hd-V2Z">
+                            <rect key="frame" x="482" y="0.0" width="15" height="35"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="15" id="TEa-Mi-bMV"/>
+                            </constraints>
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <state key="normal" image="go_icon"/>
+                            <state key="highlighted" image="go_icon"/>
+                            <connections>
+                                <action selector="userIconButtonClick:" destination="8lR-Hj-2wB" eventType="touchUpInside" id="3Gy-F9-DPY"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Aa7-Yw-Dvm" customClass="IBInspectableButton" customModule="PinGo" customModuleProvider="target">
+                            <rect key="frame" x="457" y="5" width="25" height="25"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="25" id="DPN-db-xOs"/>
+                                <constraint firstAttribute="height" constant="25" id="gKo-VX-9m2"/>
+                            </constraints>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="kCornerRadius">
+                                    <real key="value" value="12.5"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="boolean" keyPath="kCanHighlight" value="NO"/>
+                            </userDefinedRuntimeAttributes>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IWz-Rk-CVM" customClass="IBInspectableButton" customModule="PinGo" customModuleProvider="target">
+                            <rect key="frame" x="427" y="5" width="25" height="25"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="25" id="ivA-SO-5hk"/>
+                                <constraint firstAttribute="height" constant="25" id="kFa-pz-cnR"/>
+                            </constraints>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="kCornerRadius">
+                                    <real key="value" value="12.5"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="boolean" keyPath="kCanHighlight" value="NO"/>
+                            </userDefinedRuntimeAttributes>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DkZ-ni-bqs" customClass="IBInspectableButton" customModule="PinGo" customModuleProvider="target">
+                            <rect key="frame" x="397" y="5" width="25" height="25"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="25" id="836-TD-ZFa"/>
+                                <constraint firstAttribute="height" constant="25" id="vdM-7t-7l3"/>
+                            </constraints>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="kCornerRadius">
+                                    <real key="value" value="12.5"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="boolean" keyPath="kCanHighlight" value="NO"/>
+                            </userDefinedRuntimeAttributes>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="0.80000000000000004" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstItem="FTH-hd-V2Z" firstAttribute="centerY" secondItem="DkZ-ni-bqs" secondAttribute="centerY" id="4BJ-0e-mhW"/>
+                        <constraint firstItem="Aa7-Yw-Dvm" firstAttribute="leading" secondItem="IWz-Rk-CVM" secondAttribute="trailing" constant="5" id="6MH-hd-aIy"/>
+                        <constraint firstItem="IWz-Rk-CVM" firstAttribute="centerY" secondItem="DkZ-ni-bqs" secondAttribute="centerY" id="Hgj-v8-BfQ"/>
+                        <constraint firstItem="IWz-Rk-CVM" firstAttribute="leading" secondItem="DkZ-ni-bqs" secondAttribute="trailing" constant="5" id="Qkh-Gm-jih"/>
+                        <constraint firstAttribute="bottom" secondItem="FTH-hd-V2Z" secondAttribute="bottom" id="RIw-Nd-sCp"/>
+                        <constraint firstItem="Aa7-Yw-Dvm" firstAttribute="centerY" secondItem="DkZ-ni-bqs" secondAttribute="centerY" id="S3W-Fc-r2t"/>
+                        <constraint firstItem="hUc-vS-R0v" firstAttribute="leading" secondItem="GY7-9E-lB0" secondAttribute="leading" constant="10" id="aTY-2i-9ET"/>
+                        <constraint firstItem="FTH-hd-V2Z" firstAttribute="top" secondItem="GY7-9E-lB0" secondAttribute="top" id="f01-2j-WEs"/>
+                        <constraint firstItem="FTH-hd-V2Z" firstAttribute="leading" secondItem="Aa7-Yw-Dvm" secondAttribute="trailing" id="h7P-On-QIG"/>
+                        <constraint firstAttribute="bottom" secondItem="hUc-vS-R0v" secondAttribute="bottom" id="mJ3-eC-kQ1"/>
+                        <constraint firstAttribute="trailing" secondItem="FTH-hd-V2Z" secondAttribute="trailing" constant="10" id="nYc-wA-pos"/>
+                        <constraint firstAttribute="height" constant="35" id="nkl-2i-rZB"/>
+                        <constraint firstItem="hUc-vS-R0v" firstAttribute="top" secondItem="GY7-9E-lB0" secondAttribute="top" id="xjT-aS-eyH"/>
+                    </constraints>
+                </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9id-Pq-P85">
+                    <rect key="frame" x="417" y="182" width="80" height="28"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="80" id="MbH-9D-oMl"/>
+                        <constraint firstAttribute="height" constant="28" id="pfL-B2-LGa"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="BigYoungMediumGB2.0" family="BigYoungMediumGB2.0" pointSize="14"/>
+                    <state key="normal" title="关注" image="unfollow_icon" backgroundImage="follow_btn_bg"/>
+                    <state key="highlighted" image="unfollow_icon" backgroundImage="follow_btn_bg"/>
+                    <connections>
+                        <action selector="followButtonClick:" destination="8lR-Hj-2wB" eventType="touchUpInside" id="3iT-XG-mnH"/>
+                    </connections>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Apm-fg-KUD">
+                    <rect key="frame" x="10" y="184" width="397" height="25.5"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="25.5" id="6eG-YE-uAN"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="BigYoungMediumGB2.0" family="BigYoungMediumGB2.0" pointSize="12"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nzs-g3-qil">
+                    <rect key="frame" x="10" y="156" width="397" height="18"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="18" id="dwu-qJ-0fz"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="BigYoungMediumGB2.0" family="BigYoungMediumGB2.0" pointSize="17"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="GY7-9E-lB0" secondAttribute="trailing" id="0Nr-aV-eym"/>
+                <constraint firstItem="nzs-g3-qil" firstAttribute="leading" secondItem="8lR-Hj-2wB" secondAttribute="leading" constant="10" id="CTh-1X-Q6A"/>
+                <constraint firstItem="GY7-9E-lB0" firstAttribute="top" secondItem="9id-Pq-P85" secondAttribute="bottom" constant="10" id="GZz-hS-VwA"/>
+                <constraint firstItem="Bdw-Q9-zGw" firstAttribute="top" secondItem="8lR-Hj-2wB" secondAttribute="top" id="MQf-tx-1Hl"/>
+                <constraint firstItem="GY7-9E-lB0" firstAttribute="leading" secondItem="8lR-Hj-2wB" secondAttribute="leading" id="PPR-Em-N8H"/>
+                <constraint firstItem="9id-Pq-P85" firstAttribute="leading" secondItem="Apm-fg-KUD" secondAttribute="trailing" constant="10" id="W91-fJ-LI0"/>
+                <constraint firstItem="Apm-fg-KUD" firstAttribute="leading" secondItem="8lR-Hj-2wB" secondAttribute="leading" constant="10" id="bHa-Kw-AuY"/>
+                <constraint firstAttribute="trailing" secondItem="9id-Pq-P85" secondAttribute="trailing" constant="10" id="blg-ik-0uR"/>
+                <constraint firstAttribute="trailing" secondItem="Bdw-Q9-zGw" secondAttribute="trailing" id="gj0-PU-fe5"/>
+                <constraint firstItem="Bdw-Q9-zGw" firstAttribute="leading" secondItem="8lR-Hj-2wB" secondAttribute="leading" id="inC-gw-3M3"/>
+                <constraint firstAttribute="bottom" secondItem="GY7-9E-lB0" secondAttribute="bottom" id="jHq-JE-pFM"/>
+                <constraint firstItem="Apm-fg-KUD" firstAttribute="top" secondItem="nzs-g3-qil" secondAttribute="bottom" constant="10" id="jzB-Kw-3rc"/>
+                <constraint firstItem="GY7-9E-lB0" firstAttribute="top" secondItem="Apm-fg-KUD" secondAttribute="bottom" constant="10" id="ltk-Nn-3AX"/>
+                <constraint firstAttribute="bottom" secondItem="Bdw-Q9-zGw" secondAttribute="bottom" id="wZs-a3-lMY"/>
+                <constraint firstItem="9id-Pq-P85" firstAttribute="leading" secondItem="nzs-g3-qil" secondAttribute="trailing" constant="10" id="zWn-cL-l6e"/>
+            </constraints>
+            <connections>
+                <outlet property="backgroundImageView" destination="Bdw-Q9-zGw" id="KIY-Kc-eVr"/>
+                <outlet property="contentLabel" destination="Apm-fg-KUD" id="ZRI-7i-CiE"/>
+                <outlet property="followButton" destination="9id-Pq-P85" id="8RY-IE-FXd"/>
+                <outlet property="titleLabel" destination="nzs-g3-qil" id="1fe-ap-MF6"/>
+                <outletCollection property="userIconButtons" destination="Aa7-Yw-Dvm" collectionClass="NSMutableArray" id="VeZ-Hk-npG"/>
+                <outletCollection property="userIconButtons" destination="IWz-Rk-CVM" collectionClass="NSMutableArray" id="dNL-S1-oVY"/>
+                <outletCollection property="userIconButtons" destination="DkZ-ni-bqs" collectionClass="NSMutableArray" id="UYr-0B-Aw3"/>
+            </connections>
+            <point key="canvasLocation" x="262.5" y="336.5"/>
+        </collectionReusableView>
+    </objects>
+    <resources>
+        <image name="follow_btn_bg" width="80" height="28"/>
+        <image name="go_icon" width="7" height="13"/>
+        <image name="unfollow_icon" width="10" height="10"/>
+    </resources>
+</document>
