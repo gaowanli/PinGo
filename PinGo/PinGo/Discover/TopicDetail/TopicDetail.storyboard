@@ -1,15 +1,17 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="PiD-Du-Qba">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="PiD-Du-Qba">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <mutableArray key="BigYoungMediumGB2.0.ttf">
+        <array key="BigYoungMediumGB2.0.ttf">
             <string>BigYoungMediumGB2.0</string>
-            <string>BigYoungMediumGB2.0</string>
-            <string>BigYoungMediumGB2.0</string>
-        </mutableArray>
+        </array>
     </customFonts>
     <scenes>
         <!--Topic Detail Controller-->
@@ -21,12 +23,12 @@
                         <viewControllerLayoutGuide type="bottom" id="FN9-yW-3ue"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="XMf-Q8-OVY">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="LA7-5M-LQV">
-                                <rect key="frame" x="0.0" y="-64" width="600" height="664"/>
-                                <color key="backgroundColor" red="0.92549019607843142" green="0.92549019607843142" blue="0.92549019607843142" alpha="1" colorSpace="calibratedRGB"/>
+                                <rect key="frame" x="0.0" y="-64" width="375" height="731"/>
+                                <color key="backgroundColor" red="0.92549019607843142" green="0.92549019607843142" blue="0.92549019607843142" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="u4Y-hg-rKu" customClass="TopicDetailCollectionViewFlowLayout" customModule="PinGo" customModuleProvider="target">
                                     <size key="itemSize" width="200" height="200"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -35,7 +37,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="topicDetailCell" id="Tdx-lX-hEC" customClass="TopicDetailCell" customModule="PinGo" customModuleProvider="target">
-                                        <rect key="frame" x="10" y="10" width="285" height="497"/>
+                                        <rect key="frame" x="45" y="10" width="285" height="497"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="285" height="497"/>
@@ -43,7 +45,7 @@
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sQT-w1-PWM" customClass="IBInspectableButton" customModule="PinGo" customModuleProvider="target">
                                                     <rect key="frame" x="5" y="5" width="25" height="25"/>
-                                                    <color key="backgroundColor" red="0.40000000600000002" green="0.80000001190000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="backgroundColor" red="0.40000000600000002" green="0.80000001190000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="25" id="iCE-8c-jeD"/>
                                                         <constraint firstAttribute="height" constant="25" id="u3v-y2-ftT"/>
@@ -60,7 +62,7 @@
                                                         <constraint firstAttribute="height" constant="10" id="Ygy-Rd-hMW"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" name="BigYoungMediumGB2.0" family="BigYoungMediumGB2.0" pointSize="8"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZLI-5S-3mK">
@@ -71,12 +73,12 @@
                                                     <fontDescription key="fontDescription" name="BigYoungMediumGB2.0" family="BigYoungMediumGB2.0" pointSize="8"/>
                                                     <inset key="titleEdgeInsets" minX="5" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                     <state key="normal" title="999+" image="discover_square_hot  pic_follow_icon">
-                                                        <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <color key="titleColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </state>
                                                 </button>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Grj-q0-Fc4">
                                                     <rect key="frame" x="0.0" y="35" width="285" height="380"/>
-                                                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <color key="backgroundColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="Grj-q0-Fc4" secondAttribute="height" multiplier="3:4" id="JdQ-Ut-K63"/>
                                                     </constraints>
@@ -84,7 +86,7 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JoH-yv-FhY">
                                                     <rect key="frame" x="5" y="420" width="275" height="11"/>
                                                     <fontDescription key="fontDescription" name="BigYoungMediumGB2.0" family="BigYoungMediumGB2.0" pointSize="10"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IS0-9Q-ZRn">
@@ -92,9 +94,8 @@
                                                     <state key="normal" image="discover_subject_detail_follow_icon" backgroundImage="discover_subject_detail_follow_bg"/>
                                                 </button>
                                             </subviews>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
-                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="bottom" secondItem="JoH-yv-FhY" secondAttribute="bottom" constant="5" id="2sP-ZR-8Xb"/>
                                             <constraint firstItem="JoH-yv-FhY" firstAttribute="leading" secondItem="Tdx-lX-hEC" secondAttribute="leading" constant="5" id="2ss-IN-XLy"/>
@@ -138,19 +139,13 @@
                                 </connections>
                             </collectionView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="LA7-5M-LQV" firstAttribute="top" secondItem="XMf-Q8-OVY" secondAttribute="top" constant="-64" id="PVX-pU-WGY"/>
-                            <constraint firstItem="LA7-5M-LQV" firstAttribute="top" secondItem="XMf-Q8-OVY" secondAttribute="top" id="Vkz-uB-e1X"/>
                             <constraint firstItem="FN9-yW-3ue" firstAttribute="top" secondItem="LA7-5M-LQV" secondAttribute="bottom" id="ZDK-S7-cQC"/>
                             <constraint firstItem="LA7-5M-LQV" firstAttribute="leading" secondItem="XMf-Q8-OVY" secondAttribute="leading" id="Zpp-OY-UDt"/>
                             <constraint firstAttribute="trailing" secondItem="LA7-5M-LQV" secondAttribute="trailing" id="ikx-y5-X5c"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="Vkz-uB-e1X"/>
-                            </mask>
-                        </variation>
                     </view>
                     <navigationItem key="navigationItem" id="DnH-iN-SqG"/>
                     <connections>

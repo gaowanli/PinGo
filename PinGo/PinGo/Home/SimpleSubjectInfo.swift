@@ -17,10 +17,10 @@ class SimpleSubjectInfo: NSObject {
     init(dict: [String: AnyObject]?) {
         super.init()
         
-        guard dict?.count > 0 else {
+        guard let `dict` = dict, `dict`.keys.count > 0 else {
             return
         }
         
-        setValuesForKeysWithDictionary(dict!)
+        setValuesForKeys(`dict`)
     }
 }

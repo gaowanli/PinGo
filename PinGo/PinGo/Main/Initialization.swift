@@ -10,23 +10,23 @@ import UIKit
 
 class Initialization: NSObject {
     /// 初始化外观
-    class func initializationAppearance(window: UIWindow?) {
+    class func initializationAppearance(_ window: UIWindow?) {
         
-        window?.backgroundColor = UIColor.whiteColor()
+        window?.backgroundColor = UIColor.white
         
         let navBar = UINavigationBar.appearance()
-        let navBarSize = CGSizeMake(UIScreen.mainScreen().bounds.width, 64)
+        let navBarSize = CGSize(width: UIScreen.main.bounds.width, height: 64)
         let navBarImage = UIImage.imageWithColor(kAppearanceColor, size: navBarSize)
-        navBar.setBackgroundImage(navBarImage, forBarMetrics: .Default)
+        navBar.setBackgroundImage(navBarImage, for: .default)
         navBar.shadowImage = UIImage()
-        navBar.tintColor = UIColor.whiteColor()
+        navBar.tintColor = UIColor.white
         
         navBar.titleTextAttributes = [
             NSFontAttributeName: kNavigationBarFont,
-            NSForegroundColorAttributeName: UIColor.whiteColor()
+            NSForegroundColorAttributeName: UIColor.white
         ]
      
         let tabBar = UITabBar.appearance()
-        tabBar.translucent = false
+        tabBar.isTranslucent = false
     }
 }

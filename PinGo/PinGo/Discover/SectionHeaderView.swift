@@ -10,7 +10,7 @@ import UIKit
 
 class SectionHeaderView: UICollectionReusableView {
     
-    @IBOutlet private var label: UILabel!
+    @IBOutlet fileprivate var label: UILabel!
     
     var showText: String? {
         didSet {
@@ -19,6 +19,6 @@ class SectionHeaderView: UICollectionReusableView {
     }
     
     class func loadFromNib() -> SectionHeaderView {
-        return NSBundle.mainBundle().loadNibNamed("SectionHeader", owner: self, options: nil).last as! SectionHeaderView
+        return Bundle.main.loadNibNamed("SectionHeader", owner: self, options: nil)!.last as! SectionHeaderView
     }
 }

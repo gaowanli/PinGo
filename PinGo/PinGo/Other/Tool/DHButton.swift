@@ -10,12 +10,12 @@ import UIKit
 
 /// 取消高亮的button
 class DHButton: UIButton {
-    override var highlighted: Bool {
+    override var isHighlighted: Bool {
         get {
-            return super.highlighted
+            return super.isHighlighted
         }
         set {
-            super.highlighted = false
+            super.isHighlighted = false
         }
     }
 }

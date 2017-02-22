@@ -18,11 +18,11 @@ class FamousType: NSObject {
     init(dict: [String: AnyObject]?) {
         super.init()
         
-        guard dict?.count > 0 else {
+        guard let `dict` = dict, `dict`.keys.count > 0 else {
             return
         }
         
-        for (key, value) in dict! {
+        for (key, value) in `dict` {
             let keyName = key as String
             if keyName == "typeID" {
                 if let t = value as? String {

@@ -16,12 +16,12 @@ protocol TopicHeaderViewDelegate: NSObjectProtocol {
      - parameter headerView:   view
      - parameter button: 按钮
      */
-    func topicHeaderView(headerView: TopicHeaderView, didClickButton button: UIButton)
+    func topicHeaderView(_ headerView: TopicHeaderView, didClickButton button: UIButton)
 }
 
 class TopicHeaderView: UIView {
     
-    @IBOutlet private weak var topView: UIView!
+    @IBOutlet fileprivate weak var topView: UIView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -49,18 +49,18 @@ class TopicHeaderView: UIView {
         imageCarouselView.stopTimer()
     }
     
-    @IBAction func buttonClick(sender: UITapGestureRecognizer) {
+    @IBAction func buttonClick(_ sender: UITapGestureRecognizer) {
         if let view = sender.view {
             print(view.tag)
         }
     }
     
     class func loadFromNib() -> TopicHeaderView {
-        return NSBundle.mainBundle().loadNibNamed("TopicHeader", owner: self, options: nil).last as! TopicHeaderView
+        return Bundle.main.loadNibNamed("TopicHeader", owner: self, options: nil)!.last as! TopicHeaderView
     }
     
     // MARK: lazy loading
-    private lazy var imageCarouselView: ImageCarouselView = {
+    fileprivate lazy var imageCarouselView: ImageCarouselView = {
         let i = ImageCarouselView.loadFromNib()
         return i
     }()

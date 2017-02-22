@@ -9,80 +9,80 @@
 import UIKit
 
 enum LeftRefreshViewState {
-    case Default, Pulling, Refreshing
+    case `default`, pulling, refreshing
 }
 
 private let kLeftRefreshViewWidth: CGFloat = 65.0
 
 class LeftRefreshView: UIControl {
     
-    private var scrollView: UIScrollView?
+    fileprivate var scrollView: UIScrollView?
     
-    private var beforeState: LeftRefreshViewState = .Default
-    private var refreshState: LeftRefreshViewState = .Default {
+    fileprivate var beforeState: LeftRefreshViewState = .default
+    fileprivate var refreshState: LeftRefreshViewState = .default {
         didSet {
             switch refreshState {
-            case .Default:
+            case .default:
                 imageView.shouldAnimating = false
-                if beforeState == .Refreshing {
-                    UIView.animateWithDuration(0.25, animations: { () in
+                if beforeState == .refreshing {
+                    UIView.animate(withDuration: 0.25, animations: { () in
                         var contentInset = self.scrollView!.contentInset
                         contentInset.left -= kLeftRefreshViewWidth
                         self.scrollView?.contentInset = contentInset
-                        debugPrint("\(self.dynamicType) \(__FUNCTION__) \(__LINE__)")
+                        debugPrint("\(type(of: self)) \(#function) \(#line)")
                     })
                 }
-            case .Pulling:
+            case .pulling:
                 imageView.shouldAnimating = true
-                debugPrint("\(self.dynamicType) \(__FUNCTION__) \(__LINE__)")
-            case .Refreshing:
-                UIView.animateWithDuration(0.25, animations: { () in
+                debugPrint("\(type(of: self)) \(#function) \(#line)")
+            case .refreshing:
+                UIView.animate(withDuration: 0.25, animations: { () in
                     var contentInset = self.scrollView!.contentInset
                     contentInset.left += kLeftRefreshViewWidth
                     self.scrollView?.contentInset = contentInset
-                    debugPrint("\(self.dynamicType) \(__FUNCTION__) \(__LINE__)")
+                    debugPrint("\(type(of: self)) \(#function) \(#line)")
                 })
                 // 调用刷新的方法
-                sendActionsForControlEvents(.ValueChanged)
+                sendActions(for: .valueChanged)
             }
             beforeState = refreshState
         }
     }
     
-    override func willMoveToSuperview(newSuperview: UIView?) {
-        super.willMoveToSuperview(newSuperview)
-        if let s = newSuperview where s.isKindOfClass(UIScrollView.self) {
-            s.addObserver(self, forKeyPath: "contentOffset", options: NSKeyValueObservingOptions.New, context: nil)
+    override func willMove(toSuperview newSuperview: UIView?) {
+        super.willMove(toSuperview: newSuperview)
+        if let s = newSuperview, s.isKind(of: UIScrollView.self) {
+            s.addObserver(self, forKeyPath: "contentOffset", options: NSKeyValueObservingOptions.new, context: nil)
             scrollView = s as? UIScrollView
-            frame = CGRectMake(-kLeftRefreshViewWidth, 0, kLeftRefreshViewWidth, CGRectGetHeight(s.bounds))
+            frame = CGRect(x: -kLeftRefreshViewWidth, y: 0, width: kLeftRefreshViewWidth, height: s.bounds.height)
             addSubview(imageView)
         }
     }
     
-    override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         let leftInset = scrollView!.contentInset.left
         let offsetX = scrollView!.contentOffset.x
         
-        let criticalValue = -leftInset - CGRectGetWidth(bounds)
+        let criticalValue = -leftInset - bounds.width
         // 拖动
-        if scrollView!.dragging {
-            if refreshState == .Default && offsetX < criticalValue {
+        if scrollView!.isDragging {
+            if refreshState == .default && offsetX < criticalValue {
                 // 完全显示出来
-                refreshState = .Pulling
-            }else if refreshState == .Pulling && offsetX >= criticalValue {
+                refreshState = .pulling
+            }else if refreshState == .pulling && offsetX >= criticalValue {
                 // 没有完全显示出来/没有显示出来
-                refreshState = .Default
+                refreshState = .default
             }
         }else {
             // 结束拖动
-            if refreshState == .Pulling {
-                refreshState = .Refreshing
+            if refreshState == .pulling {
+                refreshState = .refreshing
             }
         }
     }
     
     func endRefresh() {
-        refreshState = .Default
+        refreshState = .default
     }
     
     deinit {
@@ -92,11 +92,11 @@ class LeftRefreshView: UIControl {
     }
     
     // MARK: lazy loading
-    private lazy var imageView: LeftImageView = {
-        let y = (CGRectGetHeight(self.bounds) - kLeftRefreshViewWidth) * 0.5 - self.scrollView!.contentInset.top - kTabBarHeight
-        let i = LeftImageView(frame: CGRectMake(0, y, kLeftRefreshViewWidth, kLeftRefreshViewWidth))
+    fileprivate lazy var imageView: LeftImageView = {
+        let y = (self.bounds.height - kLeftRefreshViewWidth) * 0.5 - self.scrollView!.contentInset.top - kTabBarHeight
+        let i = LeftImageView(frame: CGRect(x: 0, y: y, width: kLeftRefreshViewWidth, height: kLeftRefreshViewWidth))
         i.image = UIImage(named: "loading0")
-        i.contentMode = .Center
+        i.contentMode = .center
         return i
     }()
 }
@@ -106,7 +106,7 @@ private class LeftImageView: UIImageView {
     var shouldAnimating: Bool = false {
         didSet {
             if shouldAnimating {
-                if !isAnimating() {
+                if !isAnimating {
                     var images = [UIImage]()
                     for i in 0..<3 {
                         images.append(UIImage(named: "loading\(i)")!)

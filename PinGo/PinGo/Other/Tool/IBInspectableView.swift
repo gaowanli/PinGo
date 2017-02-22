@@ -36,12 +36,12 @@ import UIKit
     }
     @IBInspectable var kCanHighlight: Bool = true
     
-    override var highlighted: Bool {
+    override var isHighlighted: Bool {
         get {
-            return super.highlighted
+            return super.isHighlighted
         }
         set {
-            super.highlighted = kCanHighlight
+            super.isHighlighted = kCanHighlight
         }
     }
 }

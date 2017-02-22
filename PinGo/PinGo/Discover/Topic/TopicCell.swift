@@ -12,9 +12,9 @@ private let kCellReuseIdentifier = "photoCell"
 
 class TopicCell: UITableViewCell {
     
-    @IBOutlet private weak var topView: UIView!
-    @IBOutlet private weak var collectionView: UICollectionView!
-    @IBOutlet private weak var layout: UICollectionViewFlowLayout!
+    @IBOutlet fileprivate weak var topView: UIView!
+    @IBOutlet fileprivate weak var collectionView: UICollectionView!
+    @IBOutlet fileprivate weak var layout: UICollectionViewFlowLayout!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -25,12 +25,12 @@ class TopicCell: UITableViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        dispatch_async(dispatch_get_main_queue()) { () in
+        DispatchQueue.main.async { () in
             self.headerView.frame = self.topView.bounds
         }
         
-        let height = CGRectGetHeight(collectionView.bounds)
-        layout.itemSize = CGSizeMake(height, height)
+        let height = collectionView.bounds.height
+        layout.itemSize = CGSize(width: height, height: height)
     }
     
     var headerViewText: String? {
@@ -46,19 +46,19 @@ class TopicCell: UITableViewCell {
     }
     
     //MARK: lazy loading
-    private lazy var headerView: SectionHeaderView = {
+    fileprivate lazy var headerView: SectionHeaderView = {
         return SectionHeaderView.loadFromNib()
     }()
 }
 
 extension TopicCell: UICollectionViewDataSource {
     
-    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return photoInfoList?.count ?? 0
     }
     
-    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(kCellReuseIdentifier, forIndexPath: indexPath) as! PhotoCell
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: kCellReuseIdentifier, for: indexPath) as! PhotoCell
         cell.photoInfo = photoInfoList![indexPath.item]
         return cell
     }
@@ -66,13 +66,13 @@ extension TopicCell: UICollectionViewDataSource {
 
 class PhotoCell: UICollectionViewCell {
     
-    @IBOutlet private weak var imageView: UIImageView!
+    @IBOutlet fileprivate weak var imageView: UIImageView!
     
     var photoInfo: TopicInfo? {
         didSet {
             if let urlStr = photoInfo!.resUrl {
-                if let url = NSURL(string: urlStr) {
-                    imageView.kf_setImageWithURL(url)
+                if let url = URL(string: urlStr) {
+                    imageView.kf.setImage(with: url)
                 }
             }
         }

@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3DB7719EAB4F9A2CC50387DA /* Pods_PinGo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE555BB7ED2D8093D7609890 /* Pods_PinGo.framework */; };
+		16CFC1B5B0375D764A8D1878 /* Pods_PinGo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09A95998D994F342E7377BE0 /* Pods_PinGo.framework */; };
 		850D6A141C609921004648C5 /* Array+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 850D6A131C609920004648C5 /* Array+Extension.swift */; };
 		851521901C491198004E681D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8515218F1C491198004E681D /* AppDelegate.swift */; };
 		851521921C4930AB004E681D /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 851521911C4930AB004E681D /* HomeController.swift */; };
@@ -55,8 +55,6 @@
 		856D14B01C6352C1005D046D /* TopicDetailCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856D14AF1C6352C1005D046D /* TopicDetailCollectionViewFlowLayout.swift */; };
 		856D14B21C635342005D046D /* TopicDetailHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856D14B11C635342005D046D /* TopicDetailHeaderView.swift */; };
 		856D14B41C635350005D046D /* TopicDetailHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 856D14B31C635350005D046D /* TopicDetailHeader.xib */; };
-		856E40C01C48BFC500216E9C /* PinGoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856E40BF1C48BFC500216E9C /* PinGoTests.swift */; };
-		856E40CB1C48BFC500216E9C /* PinGoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856E40CA1C48BFC500216E9C /* PinGoUITests.swift */; };
 		856E40FF1C48C13000216E9C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 856E40F31C48C13000216E9C /* Assets.xcassets */; };
 		856E41001C48C13000216E9C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 856E40F41C48C13000216E9C /* LaunchScreen.storyboard */; };
 		856E410B1C48C2F000216E9C /* Heders.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856E41041C48C2F000216E9C /* Heders.swift */; };
@@ -85,25 +83,9 @@
 		85ED356D1C5F038200CD45DF /* Banner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85ED356C1C5F038200CD45DF /* Banner.swift */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		856E40BC1C48BFC500216E9C /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 856E409F1C48BFC500216E9C /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 856E40A61C48BFC500216E9C;
-			remoteInfo = PinGo;
-		};
-		856E40C71C48BFC500216E9C /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 856E409F1C48BFC500216E9C /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 856E40A61C48BFC500216E9C;
-			remoteInfo = PinGo;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
-		1B2767DDB864680F8632A793 /* Pods-PinGo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PinGo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PinGo/Pods-PinGo.debug.xcconfig"; sourceTree = "<group>"; };
+		09A95998D994F342E7377BE0 /* Pods_PinGo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PinGo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4F7C65B4C935E1050BAD23FC /* Pods-PinGo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PinGo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PinGo/Pods-PinGo.debug.xcconfig"; sourceTree = "<group>"; };
 		850D6A131C609920004648C5 /* Array+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+Extension.swift"; sourceTree = "<group>"; };
 		8515218F1C491198004E681D /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		851521911C4930AB004E681D /* HomeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
@@ -152,10 +134,8 @@
 		856D14B11C635342005D046D /* TopicDetailHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopicDetailHeaderView.swift; sourceTree = "<group>"; };
 		856D14B31C635350005D046D /* TopicDetailHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TopicDetailHeader.xib; sourceTree = "<group>"; };
 		856E40A71C48BFC500216E9C /* PinGo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PinGo.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		856E40BB1C48BFC500216E9C /* PinGoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PinGoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		856E40BF1C48BFC500216E9C /* PinGoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinGoTests.swift; sourceTree = "<group>"; };
 		856E40C11C48BFC500216E9C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		856E40C61C48BFC500216E9C /* PinGoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PinGoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		856E40CA1C48BFC500216E9C /* PinGoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinGoUITests.swift; sourceTree = "<group>"; };
 		856E40CC1C48BFC500216E9C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		856E40F31C48C13000216E9C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -185,8 +165,7 @@
 		85D003A41C4C898A00D0A7AE /* FamousType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FamousType.swift; sourceTree = "<group>"; };
 		85D003A61C4C8E1900D0A7AE /* SimpleSubjectInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleSubjectInfo.swift; sourceTree = "<group>"; };
 		85ED356C1C5F038200CD45DF /* Banner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Banner.swift; sourceTree = "<group>"; };
-		D5B530A8586AD860BDC8229E /* Pods-PinGo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PinGo.release.xcconfig"; path = "Pods/Target Support Files/Pods-PinGo/Pods-PinGo.release.xcconfig"; sourceTree = "<group>"; };
-		EE555BB7ED2D8093D7609890 /* Pods_PinGo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PinGo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AD592AE83AF2883F141926B7 /* Pods-PinGo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PinGo.release.xcconfig"; path = "Pods/Target Support Files/Pods-PinGo/Pods-PinGo.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -194,31 +173,17 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3DB7719EAB4F9A2CC50387DA /* Pods_PinGo.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		856E40B81C48BFC500216E9C /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		856E40C31C48BFC500216E9C /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
+				16CFC1B5B0375D764A8D1878 /* Pods_PinGo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		4D9B1FD594937FAB45F515FF /* Frameworks */ = {
+		076F160D3836D4F4B4C29D7D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				EE555BB7ED2D8093D7609890 /* Pods_PinGo.framework */,
+				09A95998D994F342E7377BE0 /* Pods_PinGo.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -269,8 +234,8 @@
 				856E40BE1C48BFC500216E9C /* PinGoTests */,
 				856E40C91C48BFC500216E9C /* PinGoUITests */,
 				856E40A81C48BFC500216E9C /* Products */,
-				C226B61893705AC13AD4BC20 /* Pods */,
-				4D9B1FD594937FAB45F515FF /* Frameworks */,
+				BE498D92BCE2BBEBD725C0C4 /* Pods */,
+				076F160D3836D4F4B4C29D7D /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -278,8 +243,6 @@
 			isa = PBXGroup;
 			children = (
 				856E40A71C48BFC500216E9C /* PinGo.app */,
-				856E40BB1C48BFC500216E9C /* PinGoTests.xctest */,
-				856E40C61C48BFC500216E9C /* PinGoUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -433,11 +396,11 @@
 			path = Show;
 			sourceTree = "<group>";
 		};
-		C226B61893705AC13AD4BC20 /* Pods */ = {
+		BE498D92BCE2BBEBD725C0C4 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				1B2767DDB864680F8632A793 /* Pods-PinGo.debug.xcconfig */,
-				D5B530A8586AD860BDC8229E /* Pods-PinGo.release.xcconfig */,
+				4F7C65B4C935E1050BAD23FC /* Pods-PinGo.debug.xcconfig */,
+				AD592AE83AF2883F141926B7 /* Pods-PinGo.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -449,12 +412,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 856E40CF1C48BFC500216E9C /* Build configuration list for PBXNativeTarget "PinGo" */;
 			buildPhases = (
-				D8AE088FC317D3BFD303613C /* Check Pods Manifest.lock */,
+				3C57738163C7E6B94E50D465 /* [CP] Check Pods Manifest.lock */,
 				856E40A31C48BFC500216E9C /* Sources */,
 				856E40A41C48BFC500216E9C /* Frameworks */,
 				856E40A51C48BFC500216E9C /* Resources */,
-				6E5345E9EFD6AE84EF2F0396 /* Embed Pods Frameworks */,
-				199A44EAD58EB01F5492000C /* Copy Pods Resources */,
+				0C97E1C0F847197629164498 /* [CP] Embed Pods Frameworks */,
+				E6B0AE813FBF5168596AB8D5 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -465,42 +428,6 @@
 			productReference = 856E40A71C48BFC500216E9C /* PinGo.app */;
 			productType = "com.apple.product-type.application";
 		};
-		856E40BA1C48BFC500216E9C /* PinGoTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 856E40D21C48BFC500216E9C /* Build configuration list for PBXNativeTarget "PinGoTests" */;
-			buildPhases = (
-				856E40B71C48BFC500216E9C /* Sources */,
-				856E40B81C48BFC500216E9C /* Frameworks */,
-				856E40B91C48BFC500216E9C /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				856E40BD1C48BFC500216E9C /* PBXTargetDependency */,
-			);
-			name = PinGoTests;
-			productName = PinGoTests;
-			productReference = 856E40BB1C48BFC500216E9C /* PinGoTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		856E40C51C48BFC500216E9C /* PinGoUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 856E40D51C48BFC500216E9C /* Build configuration list for PBXNativeTarget "PinGoUITests" */;
-			buildPhases = (
-				856E40C21C48BFC500216E9C /* Sources */,
-				856E40C31C48BFC500216E9C /* Frameworks */,
-				856E40C41C48BFC500216E9C /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				856E40C81C48BFC500216E9C /* PBXTargetDependency */,
-			);
-			name = PinGoUITests;
-			productName = PinGoUITests;
-			productReference = 856E40C61C48BFC500216E9C /* PinGoUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -508,19 +435,12 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0720;
-				LastUpgradeCheck = 0720;
+				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = GWL;
 				TargetAttributes = {
 					856E40A61C48BFC500216E9C = {
 						CreatedOnToolsVersion = 7.2;
-					};
-					856E40BA1C48BFC500216E9C = {
-						CreatedOnToolsVersion = 7.2;
-						TestTargetID = 856E40A61C48BFC500216E9C;
-					};
-					856E40C51C48BFC500216E9C = {
-						CreatedOnToolsVersion = 7.2;
-						TestTargetID = 856E40A61C48BFC500216E9C;
+						LastSwiftMigration = 0820;
 					};
 				};
 			};
@@ -538,8 +458,6 @@
 			projectRoot = "";
 			targets = (
 				856E40A61C48BFC500216E9C /* PinGo */,
-				856E40BA1C48BFC500216E9C /* PinGoTests */,
-				856E40C51C48BFC500216E9C /* PinGoUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -574,46 +492,17 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		856E40B91C48BFC500216E9C /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		856E40C41C48BFC500216E9C /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		199A44EAD58EB01F5492000C /* Copy Pods Resources */ = {
+		0C97E1C0F847197629164498 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PinGo/Pods-PinGo-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		6E5345E9EFD6AE84EF2F0396 /* Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Embed Pods Frameworks";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -621,19 +510,34 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PinGo/Pods-PinGo-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		D8AE088FC317D3BFD303613C /* Check Pods Manifest.lock */ = {
+		3C57738163C7E6B94E50D465 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Check Pods Manifest.lock";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		E6B0AE813FBF5168596AB8D5 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PinGo/Pods-PinGo-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -697,36 +601,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		856E40B71C48BFC500216E9C /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				856E40C01C48BFC500216E9C /* PinGoTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		856E40C21C48BFC500216E9C /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				856E40CB1C48BFC500216E9C /* PinGoUITests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		856E40BD1C48BFC500216E9C /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 856E40A61C48BFC500216E9C /* PinGo */;
-			targetProxy = 856E40BC1C48BFC500216E9C /* PBXContainerItemProxy */;
-		};
-		856E40C81C48BFC500216E9C /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 856E40A61C48BFC500216E9C /* PinGo */;
-			targetProxy = 856E40C71C48BFC500216E9C /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		851521AA1C494739004E681D /* Main.storyboard */ = {
@@ -761,8 +636,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -805,8 +682,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -825,13 +704,14 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};
 		856E40D01C48BFC500216E9C /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1B2767DDB864680F8632A793 /* Pods-PinGo.debug.xcconfig */;
+			baseConfigurationReference = 4F7C65B4C935E1050BAD23FC /* Pods-PinGo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -840,12 +720,13 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.gaowanli.PinGo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
 		856E40D11C48BFC500216E9C /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D5B530A8586AD860BDC8229E /* Pods-PinGo.release.xcconfig */;
+			baseConfigurationReference = AD592AE83AF2883F141926B7 /* Pods-PinGo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -854,54 +735,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.gaowanli.PinGo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Release;
-		};
-		856E40D31C48BFC500216E9C /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				INFOPLIST_FILE = PinGoTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.gaowanli.PinGoTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PinGo.app/PinGo";
-			};
-			name = Debug;
-		};
-		856E40D41C48BFC500216E9C /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				INFOPLIST_FILE = PinGoTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.gaowanli.PinGoTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PinGo.app/PinGo";
-			};
-			name = Release;
-		};
-		856E40D61C48BFC500216E9C /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				INFOPLIST_FILE = PinGoUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.gaowanli.PinGoUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_TARGET_NAME = PinGo;
-				USES_XCTRUNNER = YES;
-			};
-			name = Debug;
-		};
-		856E40D71C48BFC500216E9C /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				INFOPLIST_FILE = PinGoUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.gaowanli.PinGoUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_TARGET_NAME = PinGo;
-				USES_XCTRUNNER = YES;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -922,24 +756,6 @@
 			buildConfigurations = (
 				856E40D01C48BFC500216E9C /* Debug */,
 				856E40D11C48BFC500216E9C /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		856E40D21C48BFC500216E9C /* Build configuration list for PBXNativeTarget "PinGoTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				856E40D31C48BFC500216E9C /* Debug */,
-				856E40D41C48BFC500216E9C /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		856E40D51C48BFC500216E9C /* Build configuration list for PBXNativeTarget "PinGoUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				856E40D61C48BFC500216E9C /* Debug */,
-				856E40D71C48BFC500216E9C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

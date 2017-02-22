@@ -16,12 +16,12 @@ protocol DiscoverHeaderViewDelegate: NSObjectProtocol {
      - parameter headerView:   view
      - parameter button: 按钮
      */
-    func discoverHeaderView(headerView: DiscoverHeaderView, didClickButton button: UIButton)
+    func discoverHeaderView(_ headerView: DiscoverHeaderView, didClickButton button: UIButton)
 }
 
 class DiscoverHeaderView: UIView {
     
-    @IBOutlet private weak var topView: UIView!
+    @IBOutlet fileprivate weak var topView: UIView!
     
     var bannerList: [Banner]? {
         didSet {
@@ -49,15 +49,15 @@ class DiscoverHeaderView: UIView {
         imageCarouselView.stopTimer()
     }
     
-    @IBAction func buttonClick(sender: AnyObject) {
+    @IBAction func buttonClick(_ sender: AnyObject) {
     }
     
     class func loadFromNib() -> DiscoverHeaderView {
-        return NSBundle.mainBundle().loadNibNamed("DiscoverHeader", owner: self, options: nil).last as! DiscoverHeaderView
+        return Bundle.main.loadNibNamed("DiscoverHeader", owner: self, options: nil)!.last as! DiscoverHeaderView
     }
     
     // MARK: lazy loading
-    private lazy var imageCarouselView: ImageCarouselView = {
+    fileprivate lazy var imageCarouselView: ImageCarouselView = {
         let i = ImageCarouselView.loadFromNib()
         return i
     }()

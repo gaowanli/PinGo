@@ -16,7 +16,7 @@ extension UIStoryboard {
      
      - returns: 初始控制器
      */
-    class func initialViewController(name: String) -> UIViewController {
+    class func initialViewController(_ name: String) -> UIViewController {
         let sb = UIStoryboard(name: name, bundle: nil)
         return sb.instantiateInitialViewController()!
     }
@@ -29,8 +29,8 @@ extension UIStoryboard {
      
      - returns: 对应的控制器
      */
-    class func initialViewController(name: String, identifier: String) -> UIViewController {
+    class func initialViewController(_ name: String, identifier: String) -> UIViewController {
         let sb = UIStoryboard(name: name, bundle: nil)
-        return sb.instantiateViewControllerWithIdentifier(identifier) 
+        return sb.instantiateViewController(withIdentifier: identifier) 
     }
 }

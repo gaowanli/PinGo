@@ -11,7 +11,7 @@ import Foundation
 extension Array {
     
     func split(startIndex sIndex: Int, endIndex eIndex: Int) -> [Element] {
-        return 0.stride(to: eIndex, by: eIndex).map { _ in
+        return stride(from: 0, to: eIndex, by: eIndex).map { _ in
             return Array(self[sIndex ..< eIndex])
         }[0]
     }

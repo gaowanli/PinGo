@@ -14,8 +14,8 @@ private let kHeaderViewHeight: CGFloat        = iPhone4s ? 180.0 : 280.0
 
 class TopicDetailController: UIViewController {
     
-    @IBOutlet private weak var collectionView: UICollectionView!
-    @IBOutlet private weak var layout: TopicDetailCollectionViewFlowLayout!
+    @IBOutlet fileprivate weak var collectionView: UICollectionView!
+    @IBOutlet fileprivate weak var layout: TopicDetailCollectionViewFlowLayout!
     
     var subjectID: String?
     
@@ -23,12 +23,12 @@ class TopicDetailController: UIViewController {
         super.viewDidLoad()
         
         collectionView.contentInset = UIEdgeInsetsMake(kHeaderViewHeight, 0, 0, 0)
-        collectionView.insertSubview(headerView, atIndex: 0)
+        collectionView.insertSubview(headerView, at: 0)
         
         fetchData()
     }
     
-    private func fetchData() {
+    fileprivate func fetchData() {
         guard subjectID != nil else {
             return
         }
@@ -37,51 +37,45 @@ class TopicDetailController: UIViewController {
                 if let strongSelf = self {
                     strongSelf.headerView.showDataList = (subjectInfo, managerUserList)
                 }
-                })
+            })
             
             TopicInfo.fetchSubjectTopicList(subjectID: subjectId, completion: {  [weak self] (isEnd, sortValue, topicInfoList) in
                 if let strongSelf = self {
-                    if topicInfoList?.count > 0 {
-                        strongSelf.topicInfoList = topicInfoList!
-                        strongSelf.layout.topicInfoList = topicInfoList!
+                    if let `topicInfoList` = topicInfoList, `topicInfoList`.count > 0 {
+                        strongSelf.topicInfoList = `topicInfoList`
+                        strongSelf.layout.topicInfoList = `topicInfoList`
                         strongSelf.collectionView.reloadData()
                     }
                 }
-                })
+            })
         }
     }
     
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         
-        dispatch_async(dispatch_get_main_queue()) { () in
-            self.headerView.frame = CGRectMake(0, -kHeaderViewHeight, CGRectGetWidth(self.view.bounds), kHeaderViewHeight)
+        DispatchQueue.main.async { () in
+            self.headerView.frame = CGRect(x: 0, y: -kHeaderViewHeight, width: self.view.bounds.width, height: kHeaderViewHeight)
         }
     }
     
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        setNavigationBarAlpha(0.0)
-    }
-    
-    override func viewWillDisappear(animated: Bool) {
+    override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
-        setNavigationBarAlpha(1.0)
+        navigationController?.setNavigationBarHidden(false, animated: animated)
     }
     
-    private func setNavigationBarAlpha(alpha: CGFloat) {
+    fileprivate func setNavigationBarAlpha(_ alpha: CGFloat) {
         if let navigationBar = navigationController?.navigationBar {
-            if let bgView = navigationBar.valueForKey("_backgroundView") as? UIView {
+            if let bgView = navigationBar.value(forKey: "_backgroundView") as? UIView {
                 bgView.alpha = alpha
             }
             
             let titleAlpha = alpha > 0.8 ? alpha : 0
-            //            if let titleView = navigationBar.valueForKey("_titleView") as? UIView {
-            //                titleView.alpha = titleAlpha
-            //            }
             navigationBar.titleTextAttributes = [
+                //            if let titleView = navigationBar.valueForKey("_titleView") as? UIView {
+                //                titleView.alpha = titleAlpha
+                //            }
                 NSFontAttributeName: kNavigationBarFont,
                 NSForegroundColorAttributeName: UIColor(white: 1, alpha: titleAlpha)
             ]
@@ -89,11 +83,11 @@ class TopicDetailController: UIViewController {
     }
     
     // MARK: lazy loading
-    private lazy var topicInfoList: [TopicInfo] = {
+    fileprivate lazy var topicInfoList: [TopicInfo] = {
         return [TopicInfo]()
     }()
     
-    private lazy var headerView: TopicDetailHeaderView = {
+    fileprivate lazy var headerView: TopicDetailHeaderView = {
         let t = TopicDetailHeaderView.loadFromNib()
         return t
     }()
@@ -102,12 +96,12 @@ class TopicDetailController: UIViewController {
 
 extension TopicDetailController: UICollectionViewDataSource {
     
-    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return topicInfoList.count
     }
     
-    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(kCellReuseIdentifier, forIndexPath: indexPath) as! TopicDetailCell
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: kCellReuseIdentifier, for: indexPath) as! TopicDetailCell
         cell.topicInfo = topicInfoList[indexPath.item]
         return cell
     }
@@ -115,13 +109,13 @@ extension TopicDetailController: UICollectionViewDataSource {
 
 extension TopicDetailController: UICollectionViewDelegate {
     
-    func scrollViewDidScroll(scrollView: UIScrollView) {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let offset = scrollView.contentOffset
         
         if offset.y <= -(kHeaderViewHeight - kNavBarHeight) {
-            setNavigationBarAlpha(0)
+            navigationController?.setNavigationBarHidden(true, animated: false)
         }else {
-            setNavigationBarAlpha(offset.y / (kHeaderViewHeight - kNavBarHeight))
+            navigationController?.setNavigationBarHidden(false, animated: false)
         }
         
         if offset.y < kHeaderViewHeight {

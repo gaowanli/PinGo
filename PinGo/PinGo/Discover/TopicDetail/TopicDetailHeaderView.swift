@@ -10,18 +10,18 @@ import UIKit
 
 class TopicDetailHeaderView: UIView {
     
-    @IBOutlet private weak var backgroundImageView: UIImageView!
-    @IBOutlet private weak var titleLabel: UILabel!
-    @IBOutlet private weak var contentLabel: UILabel!
-    @IBOutlet private var userIconButtons: [UIButton]!
-    @IBOutlet private weak var followButton: UIButton!
+    @IBOutlet fileprivate weak var backgroundImageView: UIImageView!
+    @IBOutlet fileprivate weak var titleLabel: UILabel!
+    @IBOutlet fileprivate weak var contentLabel: UILabel!
+    @IBOutlet fileprivate var userIconButtons: [UIButton]!
+    @IBOutlet fileprivate weak var followButton: UIButton!
     
     var showDataList: (SubjectInfo?, [User]?) {
         didSet {
             if let info = showDataList.0 {
                 if let bgImgUrlStr = info.imageUrl {
-                    if let bgImgUrl = NSURL(string: bgImgUrlStr) {
-                        backgroundImageView.kf_setImageWithURL(bgImgUrl)
+                    if let bgImgUrl = URL(string: bgImgUrlStr) {
+                        backgroundImageView.kf.setImage(with: bgImgUrl)
                     }
                 }
                 titleLabel.text = info.title
@@ -36,11 +36,11 @@ class TopicDetailHeaderView: UIView {
                             return
                         }
                         
-                        if let headUrl = NSURL(string: headUrlStr) {
-                            userIconButtons[index].hidden = false
-                            userIconButtons[index].kf_setBackgroundImageWithURL(headUrl, forState: .Normal)
+                        if let headUrl = URL(string: headUrlStr) {
+                            userIconButtons[index].isHidden = false
+                            userIconButtons[index].kf.setImage(with: headUrl, for: .normal)
                         }
-                        index++
+                        index += 1
                     }
                 }
             }
@@ -48,12 +48,12 @@ class TopicDetailHeaderView: UIView {
     }
     
     class func loadFromNib() -> TopicDetailHeaderView {
-        return NSBundle.mainBundle().loadNibNamed("TopicDetailHeader", owner: self, options: nil).last as! TopicDetailHeaderView
+        return Bundle.main.loadNibNamed("TopicDetailHeader", owner: self, options: nil)!.last as! TopicDetailHeaderView
     }
     
-    @IBAction func userIconButtonClick(sender: AnyObject) {
+    @IBAction func userIconButtonClick(_ sender: AnyObject) {
     }
     
-    @IBAction func followButtonClick(sender: AnyObject) {
+    @IBAction func followButtonClick(_ sender: AnyObject) {
     }
 }

@@ -10,8 +10,8 @@ import UIKit
 
 class VisitorHeaderView: UIView {
     
-    @IBOutlet private weak var visitorCountLabel: UILabel!
-    @IBOutlet private weak var vistorTodayLabel: UILabel!
+    @IBOutlet fileprivate weak var visitorCountLabel: UILabel!
+    @IBOutlet fileprivate weak var vistorTodayLabel: UILabel!
     
     var num: (Int, Int)? {
         didSet {
@@ -21,6 +21,6 @@ class VisitorHeaderView: UIView {
     }
     
     class func loadFromNib() -> VisitorHeaderView {
-        return NSBundle.mainBundle().loadNibNamed("VisitorHeader", owner: self, options: nil).last as! VisitorHeaderView
+        return Bundle.main.loadNibNamed("VisitorHeader", owner: self, options: nil)!.last as! VisitorHeaderView
     }
 }

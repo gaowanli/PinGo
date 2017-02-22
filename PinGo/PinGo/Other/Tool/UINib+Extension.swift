@@ -10,7 +10,7 @@ import UIKit
 
 extension UINib {
     
-    class func nibWithName(name: String) -> UINib {
+    class func nibWithName(_ name: String) -> UINib {
         return UINib(nibName: name, bundle: nil)
     }
 }

@@ -14,11 +14,11 @@ private let kToTopicDetailSegue  = "home2TopicDetail"
 
 class HomeController: UIViewController {
     
-    @IBOutlet private weak var collectionView: UICollectionView!
-    @IBOutlet private weak var layout: UICollectionViewFlowLayout!
+    @IBOutlet fileprivate weak var collectionView: UICollectionView!
+    @IBOutlet fileprivate weak var layout: UICollectionViewFlowLayout!
     
-    private var queryFollowData: Bool = false
-    private var baseSortValue: String = "0"
+    fileprivate var queryFollowData: Bool = false
+    fileprivate var baseSortValue: String = "0"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,18 +33,30 @@ class HomeController: UIViewController {
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         
-        let width = CGRectGetWidth(view.bounds) - kCellInsets.left - kCellInsets.right
-        let height = CGRectGetHeight(view.bounds) - kCellInsets.top - kCellInsets.bottom
-        layout.itemSize = CGSizeMake(width, height)
+        let width = view.bounds.width - kCellInsets.left - kCellInsets.right
+        let height = view.bounds.height - kCellInsets.top - kCellInsets.bottom
+        layout.itemSize = CGSize(width: width, height: height)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        navigationController?.setNavigationBarHidden(false, animated: animated)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        navigationController?.setNavigationBarHidden(true, animated: animated)
     }
     
     func loadData() {
-        loadData(.New)
+        loadData(.new)
     }
     
-    private func loadData(query: QueryMethod) {
+    fileprivate func loadData(_ query: QueryMethod) {
         var sortValue: String = ""
-        if query == .New {
+        if query == .new {
             sortValue = "0"
         }else {
             sortValue = baseSortValue
@@ -52,12 +64,12 @@ class HomeController: UIViewController {
         
         TopicInfo.fetchTopicInfoList(isFollow: queryFollowData, order: 1, sortValue: sortValue) { [weak self] (isEnd, sortValue, topicInfoList) in
             if let strongSelf = self {
-                if topicInfoList?.count > 0 {
+                if let `topicInfoList` = topicInfoList, `topicInfoList`.count > 0 {
                     strongSelf.baseSortValue = sortValue
-                    if query == .New {
-                        strongSelf.dataList = topicInfoList!
+                    if query == .new {
+                        strongSelf.dataList = `topicInfoList`
                     }else {
-                        strongSelf.dataList.appendContentsOf(topicInfoList!)
+                        strongSelf.dataList.append(contentsOf: `topicInfoList`)
                     }
                     if strongSelf.queryFollowData {
                         strongSelf.followDataList = strongSelf.dataList
@@ -72,30 +84,30 @@ class HomeController: UIViewController {
     }
     
     // MARK: lazy loading
-    private lazy var topMenu: TopMenu = {
+    fileprivate lazy var topMenu: TopMenu = {
         let t = TopMenu.loadFromNib()
         t.showText = ("精选", "关注")
         t.delegate = self
         return t
     }()
     
-    private lazy var leftRefreshView: LeftRefreshView = {
+    fileprivate lazy var leftRefreshView: LeftRefreshView = {
         let v = LeftRefreshView()
-        v.addTarget(self, action: "loadData", forControlEvents: .ValueChanged)
+        v.addTarget(self, action: #selector(HomeController.loadData as (HomeController) -> () -> ()), for: .valueChanged)
         return v
     }()
     
-    private lazy var dataList: [TopicInfo] = {
+    fileprivate lazy var dataList: [TopicInfo] = {
         return [TopicInfo]()
     }()
     
     /// “精选”数据
-    private lazy var topDataList: [TopicInfo] = {
+    fileprivate lazy var topDataList: [TopicInfo] = {
         return [TopicInfo]()
     }()
     
     /// “关注”数据
-    private lazy var followDataList: [TopicInfo] = {
+    fileprivate lazy var followDataList: [TopicInfo] = {
         return [TopicInfo]()
     }()
 }
@@ -103,12 +115,12 @@ class HomeController: UIViewController {
 // MARK: UICollectionViewDataSource
 extension HomeController: UICollectionViewDataSource {
     
-    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return dataList.count
     }
     
-    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(kCellReuseIdentifier, forIndexPath: indexPath) as! HomeCollectionViewCell
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: kCellReuseIdentifier, for: indexPath) as! HomeCollectionViewCell
         cell.delegate = self
         cell.topiInfo = dataList[indexPath.row]
         return cell
@@ -117,7 +129,7 @@ extension HomeController: UICollectionViewDataSource {
 
 extension HomeController: TopMenuDelegate {
     
-    func topMenu(topMenu: TopMenu, didClickButton index: Int) {
+    func topMenu(_ topMenu: TopMenu, didClickButton index: Int) {
         queryFollowData = (index == 1)
         
         if followDataList.count > 0 {
@@ -131,41 +143,41 @@ extension HomeController: TopMenuDelegate {
 
 extension HomeController: HomeCollectionViewCellDelegate {
     
-    func homeCollectionViewCell(cell: HomeCollectionViewCell, didClickButton button: UIButton, withButtonType btnType: HomeCollectionViewCellButtonType, withTopiInfo topiInfo: TopicInfo) {
+    func homeCollectionViewCell(_ cell: HomeCollectionViewCell, didClickButton button: UIButton, withButtonType btnType: HomeCollectionViewCellButtonType, withTopiInfo topiInfo: TopicInfo) {
         switch btnType {
-        case .Tag:
+        case .tag:
             cellDidClickTagButton(topiInfo)
-        case .Chat:
+        case .chat:
             cellDidClickChatButton(topiInfo)
-        case .Comment:
+        case .comment:
             cellDidClickCommentButton(topiInfo)
-        case .Star:
+        case .star:
             cellDidClickStarButton(topiInfo)
         }
     }
     
-    private func cellDidClickTagButton(topiInfo: TopicInfo) {
-        performSegueWithIdentifier(kToTopicDetailSegue, sender: topiInfo)
+    fileprivate func cellDidClickTagButton(_ topiInfo: TopicInfo) {
+        performSegue(withIdentifier: kToTopicDetailSegue, sender: topiInfo)
     }
     
-    private func cellDidClickChatButton(topiInfo: TopicInfo) {
+    fileprivate func cellDidClickChatButton(_ topiInfo: TopicInfo) {
         
     }
     
-    private func cellDidClickCommentButton(topiInfo: TopicInfo) {
+    fileprivate func cellDidClickCommentButton(_ topiInfo: TopicInfo) {
         
     }
     
-    private func cellDidClickStarButton(topiInfo: TopicInfo) {
+    fileprivate func cellDidClickStarButton(_ topiInfo: TopicInfo) {
         
     }
 }
 
 extension HomeController {
 
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == kToTopicDetailSegue {
-            if let toVC = segue.destinationViewController as? TopicDetailController  {
+            if let toVC = segue.destination as? TopicDetailController  {
                 toVC.subjectID = (sender as! TopicInfo).subjectID
                 toVC.title = (sender as! TopicInfo).subjectTitle
             }

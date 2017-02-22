@@ -10,30 +10,30 @@ import UIKit
 
 class TopicDetailCell: UICollectionViewCell {
     
-    @IBOutlet private weak var userIconbutton: UIButton!
-    @IBOutlet private weak var userNameLabel: UILabel!
-    @IBOutlet private weak var startNumButton: UIButton!
-    @IBOutlet private weak var bgImageView: UIImageView!
-    @IBOutlet private weak var descLabel: UILabel!
-    @IBOutlet private weak var startButton: UIButton!
+    @IBOutlet fileprivate weak var userIconbutton: UIButton!
+    @IBOutlet fileprivate weak var userNameLabel: UILabel!
+    @IBOutlet fileprivate weak var startNumButton: UIButton!
+    @IBOutlet fileprivate weak var bgImageView: UIImageView!
+    @IBOutlet fileprivate weak var descLabel: UILabel!
+    @IBOutlet fileprivate weak var startButton: UIButton!
     
     var topicInfo: TopicInfo? {
         didSet {
             if let user = topicInfo?.userInfo {
                 if let headUrlStr = user.headUrl {
-                    if let headUrl = NSURL(string: headUrlStr) {
-                        userIconbutton.kf_setBackgroundImageWithURL(headUrl, forState: .Normal)
+                    if let headUrl = URL(string: headUrlStr) {
+                        userIconbutton.kf.setBackgroundImage(with: headUrl, for: .normal)
                     }
                 }
                 
                 userNameLabel.text = user.nickname
             }
             
-            startButton.setTitle(topicInfo?.commentCnt, forState: .Normal)
+            startButton.setTitle(topicInfo?.commentCnt, for: UIControlState())
             
             if let resUrlStr = topicInfo?.resUrl {
-                if let resUrl = NSURL(string: resUrlStr) {
-                    bgImageView.kf_setImageWithURL(resUrl)
+                if let resUrl = URL(string: resUrlStr) {
+                    bgImageView.kf.setImage(with: resUrl)
                 }
             }
             

@@ -21,10 +21,6 @@ class User: NSObject {
     var age: Int {
         return (birthday?.age(withStyle: .Style1))!
     }
-    /// 星座
-    var constellation: String? {
-        return (birthday?.constellation(withStyle: .Style1))!
-    }
     var signature: String?
     var isFamous = 0
     var onlineTime: String?
@@ -35,11 +31,11 @@ class User: NSObject {
     init(dict: [String: AnyObject]?) {
         super.init()
         
-        guard dict?.count > 0 else {
+        guard let `dict` = dict, `dict`.keys.count > 0 else {
             return
         }
         
-        for (key, value) in dict! {
+        for (key, value) in `dict` {
             let keyName = key as String
             if keyName == "famousTypeInfo" {
                 famousTypeInfo = FamousType(dict: value as? [String : AnyObject])
@@ -49,6 +45,6 @@ class User: NSObject {
         }
     }
     
-    override func setValue(value: AnyObject?, forUndefinedKey key: String) {
+    override func setValue(_ value: Any?, forUndefinedKey key: String) {
     }
 }

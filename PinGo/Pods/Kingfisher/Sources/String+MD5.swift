@@ -2,12 +2,9 @@
 //  String+MD5.swift
 //  Kingfisher
 //
-// This file is stolen from HanekeSwift: https://github.com/Haneke/HanekeSwift/blob/master/Haneke/CryptoSwiftMD5.swift
-// which is a modified version of CryptoSwift:
-//
 // To date, adding CommonCrypto to a Swift framework is problematic. See:
 // http://stackoverflow.com/questions/25248598/importing-commoncrypto-in-a-swift-framework
-// We're using a subset of CryptoSwift as a (temporary?) alternative.
+// We're using a subset and modified version of CryptoSwift as an alternative.
 // The following is an altered source version that only includes MD5. The original software can be found at:
 // https://github.com/krzyzanowskim/CryptoSwift
 // This is the original copyright notice:
@@ -24,10 +21,29 @@ Permission is granted to anyone to use this software for any purpose,including c
 
 import Foundation
 
-extension String {
-    var kf_MD5: String {
-        if let data = dataUsingEncoding(NSUTF8StringEncoding) {
-            let MD5Calculator = MD5(Array(UnsafeBufferPointer(start: UnsafePointer<UInt8>(data.bytes), count: data.length)))
+public struct StringProxy {
+    fileprivate let base: String
+    init(proxy: String) {
+        base = proxy
+    }
+}
+
+extension String: KingfisherCompatible {
+    public typealias CompatibleType = StringProxy
+    public var kf: CompatibleType {
+        return StringProxy(proxy: self)
+    }
+}
+
+extension StringProxy {
+    var md5: String {
+        if let data = base.data(using: .utf8, allowLossyConversion: true) {
+
+            let message = data.withUnsafeBytes { bytes -> [UInt8] in
+                return Array(UnsafeBufferPointer(start: bytes, count: data.count))
+            }
+
+            let MD5Calculator = MD5(message)
             let MD5Data = MD5Calculator.calculate()
 
             let MD5String = NSMutableString()
@@ -35,35 +51,38 @@ extension String {
                 MD5String.appendFormat("%02x", c)
             }
             return MD5String as String
-            
+
         } else {
-            return self
+            return base
         }
     }
 }
 
+
 /** array of bytes, little-endian representation */
-func arrayOfBytes<T>(value: T, length: Int? = nil) -> [UInt8] {
-    let totalBytes = length ?? (sizeofValue(value) * 8)
+func arrayOfBytes<T>(_ value: T, length: Int? = nil) -> [UInt8] {
+    let totalBytes = length ?? (MemoryLayout<T>.size * 8)
     
-    let valuePointer = UnsafeMutablePointer<T>.alloc(1)
-    valuePointer.memory = value
-    
-    let bytesPointer = UnsafeMutablePointer<UInt8>(valuePointer)
-    var bytes = [UInt8](count: totalBytes, repeatedValue: 0)
-    for j in 0..<min(sizeof(T), totalBytes) {
-        bytes[totalBytes - 1 - j] = (bytesPointer + j).memory
+    let valuePointer = UnsafeMutablePointer<T>.allocate(capacity: 1)
+    valuePointer.pointee = value
+
+    let bytes = valuePointer.withMemoryRebound(to: UInt8.self, capacity: totalBytes) { (bytesPointer) -> [UInt8] in
+        var bytes = [UInt8](repeating: 0, count: totalBytes)
+        for j in 0..<min(MemoryLayout<T>.size, totalBytes) {
+            bytes[totalBytes - 1 - j] = (bytesPointer + j).pointee
+        }
+        return bytes
     }
-    
-    valuePointer.destroy()
-    valuePointer.dealloc(1)
+
+    valuePointer.deinitialize()
+    valuePointer.deallocate(capacity: 1)
     
     return bytes
 }
 
 extension Int {
     /** Array of bytes with optional padding (little-endian) */
-    func bytes(totalBytes: Int = sizeof(Int)) -> [UInt8] {
+    func bytes(_ totalBytes: Int = MemoryLayout<Int>.size) -> [UInt8] {
         return arrayOfBytes(self, length: totalBytes)
     }
     
@@ -72,8 +91,8 @@ extension Int {
 extension NSMutableData {
     
     /** Convenient way to append bytes */
-    func appendBytes(arrayOfBytes: [UInt8]) {
-        appendBytes(arrayOfBytes, length: arrayOfBytes.count)
+    func appendBytes(_ arrayOfBytes: [UInt8]) {
+        append(arrayOfBytes, length: arrayOfBytes.count)
     }
     
 }
@@ -82,12 +101,12 @@ protocol HashProtocol {
     var message: Array<UInt8> { get }
     
     /** Common part for hash calculation. Prepare header data. */
-    func prepare(len: Int) -> Array<UInt8>
+    func prepare(_ len: Int) -> Array<UInt8>
 }
 
 extension HashProtocol {
     
-    func prepare(len: Int) -> Array<UInt8> {
+    func prepare(_ len: Int) -> Array<UInt8> {
         var tmpMessage = message
         
         // Step 1. Append Padding Bits
@@ -102,28 +121,19 @@ extension HashProtocol {
             msgLength += 1
         }
         
-        tmpMessage += Array<UInt8>(count: counter, repeatedValue: 0)
+        tmpMessage += Array<UInt8>(repeating: 0, count: counter)
         return tmpMessage
     }
 }
-// func anyGenerator is renamed to AnyGenerator in Swift 2.2,
-// until then it's just dirty hack for linux (because swift >= 2.2 is available for Linux)
-private func CS_AnyGenerator<Element>(body: () -> Element?) -> AnyGenerator<Element> {
-    #if os(Linux)
-        return AnyGenerator(body: body)
-    #else
-        return anyGenerator(body)
-    #endif
-}
 
-func toUInt32Array(slice: ArraySlice<UInt8>) -> Array<UInt32> {
+func toUInt32Array(_ slice: ArraySlice<UInt8>) -> Array<UInt32> {
     var result = Array<UInt32>()
     result.reserveCapacity(16)
     
-    for idx in slice.startIndex.stride(to: slice.endIndex, by: sizeof(UInt32)) {
-        let d0 = UInt32(slice[idx.advancedBy(3)]) << 24
-        let d1 = UInt32(slice[idx.advancedBy(2)]) << 16
-        let d2 = UInt32(slice[idx.advancedBy(1)]) << 8
+    for idx in stride(from: slice.startIndex, to: slice.endIndex, by: MemoryLayout<UInt32>.size) {
+        let d0 = UInt32(slice[idx.advanced(by: 3)]) << 24
+        let d1 = UInt32(slice[idx.advanced(by: 2)]) << 16
+        let d2 = UInt32(slice[idx.advanced(by: 1)]) << 8
         let d3 = UInt32(slice[idx])
         let val: UInt32 = d0 | d1 | d2 | d3
                          
@@ -132,24 +142,36 @@ func toUInt32Array(slice: ArraySlice<UInt8>) -> Array<UInt32> {
     return result
 }
 
-struct BytesSequence: SequenceType {
+struct BytesIterator: IteratorProtocol {
+    
     let chunkSize: Int
     let data: [UInt8]
     
-    func generate() -> AnyGenerator<ArraySlice<UInt8>> {
-        
-        var offset: Int = 0
-        
-        return CS_AnyGenerator {
-            let end = min(self.chunkSize, self.data.count - offset)
-            let result = self.data[offset..<offset + end]
-            offset += result.count
-            return result.count > 0 ? result : nil
-        }
+    init(chunkSize: Int, data: [UInt8]) {
+        self.chunkSize = chunkSize
+        self.data = data
+    }
+    
+    var offset = 0
+    
+    mutating func next() -> ArraySlice<UInt8>? {
+        let end = min(chunkSize, data.count - offset)
+        let result = data[offset..<offset + end]
+        offset += result.count
+        return result.count > 0 ? result : nil
     }
 }
 
-func rotateLeft(value: UInt32, bits: UInt32) -> UInt32 {
+struct BytesSequence: Sequence {
+    let chunkSize: Int
+    let data: [UInt8]
+    
+    func makeIterator() -> BytesIterator {
+        return BytesIterator(chunkSize: chunkSize, data: data)
+    }
+}
+
+func rotateLeft(_ value: UInt32, bits: UInt32) -> UInt32 {
     return ((value << bits) & 0xFFFFFFFF) | (value >> (32 - bits))
 }
 
@@ -163,10 +185,10 @@ class MD5: HashProtocol {
     }
     
     /** specifies the per-round shift amounts */
-    private let shifts: [UInt32] = [7, 12, 17, 22,  7, 12, 17, 22,  7, 12, 17, 22,  7, 12, 17, 22,
-        5,  9, 14, 20,  5,  9, 14, 20,  5,  9, 14, 20,  5,  9, 14, 20,
-        4, 11, 16, 23,  4, 11, 16, 23,  4, 11, 16, 23,  4, 11, 16, 23,
-        6, 10, 15, 21,  6, 10, 15, 21,  6, 10, 15, 21,  6, 10, 15, 21]
+    private let shifts: [UInt32] = [7, 12, 17, 22, 7, 12, 17, 22, 7, 12, 17, 22, 7, 12, 17, 22,
+                                    5, 9, 14, 20, 5, 9, 14, 20, 5, 9, 14, 20, 5, 9, 14, 20,
+                                    4, 11, 16, 23, 4, 11, 16, 23, 4, 11, 16, 23, 4, 11, 16, 23,
+                                    6, 10, 15, 21, 6, 10, 15, 21, 6, 10, 15, 21, 6, 10, 15, 21]
     
     /** binary integer part of the sines of integers (Radians) */
     private let sines: [UInt32] = [0xd76aa478, 0xe8c7b756, 0x242070db, 0xc1bdceee,
@@ -198,7 +220,7 @@ class MD5: HashProtocol {
         // Step 2. Append Length a 64-bit representation of lengthInBits
         let lengthInBits = (message.count * 8)
         let lengthBytes = lengthInBits.bytes(64 / 8)
-        tmpMessage += lengthBytes.reverse()
+        tmpMessage += lengthBytes.reversed()
 
         // Process the message in successive 512-bit chunks:
         let chunkSizeBytes = 512 / 8 // 64
@@ -259,7 +281,11 @@ class MD5: HashProtocol {
         
         hh.forEach {
             let itemLE = $0.littleEndian
-            result += [UInt8(itemLE & 0xff), UInt8((itemLE >> 8) & 0xff), UInt8((itemLE >> 16) & 0xff), UInt8((itemLE >> 24) & 0xff)]
+            let r1 = UInt8(itemLE & 0xff)
+            let r2 = UInt8((itemLE >> 8) & 0xff)
+            let r3 = UInt8((itemLE >> 16) & 0xff)
+            let r4 = UInt8((itemLE >> 24) & 0xff)
+            result += [r1, r2, r3, r4]
         }
         return result
     }

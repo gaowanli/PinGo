@@ -10,12 +10,12 @@ import UIKit
 
 class ProfileHomeController: UIViewController {
     
-    @IBOutlet private weak var headerView: UIView!
-    @IBOutlet private weak var headImageView: UIImageView!
-    @IBOutlet private weak var userNameLabel: UILabel!
+    @IBOutlet fileprivate weak var headerView: UIView!
+    @IBOutlet fileprivate weak var headImageView: UIImageView!
+    @IBOutlet fileprivate weak var userNameLabel: UILabel!
     
-    override func preferredStatusBarStyle() -> UIStatusBarStyle {
-        return .LightContent
+    override var preferredStatusBarStyle : UIStatusBarStyle {
+        return .lightContent
     }
     
     override func viewDidLoad() {
@@ -25,7 +25,7 @@ class ProfileHomeController: UIViewController {
         userNameLabel.text = "gaowanli"
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         navigationController?.setNavigationBarHidden(true, animated: true)

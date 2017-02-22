@@ -12,23 +12,23 @@ private let kCellReuseIdentifier = "imageCarouselCell"
 
 class ImageCarouselView: UIView {
     
-    @IBOutlet private weak var collectionView: UICollectionView!
-    @IBOutlet private weak var layout: UICollectionViewFlowLayout!
-    @IBOutlet private weak var pageControl: UIPageControl!
+    @IBOutlet fileprivate weak var collectionView: UICollectionView!
+    @IBOutlet fileprivate weak var layout: UICollectionViewFlowLayout!
+    @IBOutlet fileprivate weak var pageControl: UIPageControl!
     
-    private var kNumberOfSections = 0
+    fileprivate var kNumberOfSections = 0
     
-    private var timer: NSTimer?
+    fileprivate var timer: Timer?
     
     var bannerList: [Banner]? {
         didSet {
             collectionView.reloadData()
             
-            if bannerList?.count <= 1 {
-                collectionView.scrollEnabled = false
+            if (bannerList?.count)! <= 1 {
+                collectionView.isScrollEnabled = false
                 kNumberOfSections = 1
             }else {
-                collectionView.scrollEnabled = true
+                collectionView.isScrollEnabled = true
                 kNumberOfSections = 100
                 
                 collectionViewScrollToCenter()
@@ -44,7 +44,7 @@ class ImageCarouselView: UIView {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        collectionView.registerNib(UINib.nibWithName("ImageCarouselCell"), forCellWithReuseIdentifier: kCellReuseIdentifier)
+        collectionView.register(UINib.nibWithName("ImageCarouselCell"), forCellWithReuseIdentifier: kCellReuseIdentifier)
     }
     
     override func layoutSubviews() {
@@ -53,18 +53,18 @@ class ImageCarouselView: UIView {
         layout.itemSize = bounds.size
     }
     
-    private func collectionViewScrollToCenter() {
+    fileprivate func collectionViewScrollToCenter() {
         guard bannerList != nil else {
             return
         }
-        collectionView.scrollToItemAtIndexPath(NSIndexPath(forItem: 0, inSection: Int(kNumberOfSections / 2)), atScrollPosition: .Left, animated: false)
+        collectionView.scrollToItem(at: IndexPath(item: 0, section: Int(kNumberOfSections / 2)), at: .left, animated: false)
     }
     
     func scrollImage() {
         let offsetX = collectionView.contentOffset.x
-        let toOffsetX = offsetX + CGRectGetWidth(collectionView.bounds)
+        let toOffsetX = offsetX + collectionView.bounds.width
         if toOffsetX < collectionView.contentSize.width {
-            collectionView.setContentOffset(CGPointMake(toOffsetX, 0), animated: true)
+            collectionView.setContentOffset(CGPoint(x: toOffsetX, y: 0), animated: true)
         }else {
             collectionViewScrollToCenter()
         }
@@ -75,8 +75,8 @@ class ImageCarouselView: UIView {
             return
         }
         
-        timer = NSTimer.scheduledTimerWithTimeInterval(3.0, target: self, selector: "scrollImage", userInfo: nil, repeats: true)
-        NSRunLoop.currentRunLoop().addTimer(timer!, forMode: NSRunLoopCommonModes)
+        timer = Timer.scheduledTimer(timeInterval: 3.0, target: self, selector: #selector(ImageCarouselView.scrollImage), userInfo: nil, repeats: true)
+        RunLoop.current.add(timer!, forMode: RunLoopMode.commonModes)
     }
     
     func stopTimer() {
@@ -85,22 +85,22 @@ class ImageCarouselView: UIView {
     }
     
     class func loadFromNib() -> ImageCarouselView {
-        return NSBundle.mainBundle().loadNibNamed("ImageCarousel", owner: self, options: nil).last as! ImageCarouselView
+        return Bundle.main.loadNibNamed("ImageCarousel", owner: self, options: nil)!.last as! ImageCarouselView
     }
 }
 
 extension ImageCarouselView: UICollectionViewDataSource {
     
-    func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
         return kNumberOfSections
     }
     
-    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return bannerList?.count ?? 0
     }
     
-    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(kCellReuseIdentifier, forIndexPath: indexPath) as! ImageCarouselCell
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: kCellReuseIdentifier, for: indexPath) as! ImageCarouselCell
         cell.bannner = bannerList![indexPath.item]
         return cell
     }
@@ -108,29 +108,29 @@ extension ImageCarouselView: UICollectionViewDataSource {
 
 extension ImageCarouselView: UICollectionViewDelegate {
     
-    func scrollViewWillBeginDragging(scrollView: UIScrollView) {
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         stopTimer()
     }
     
-    func scrollViewDidEndDragging(scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         startTimer()
     }
     
-    func scrollViewDidScroll(scrollView: UIScrollView) {
-        let page = Int(scrollView.contentOffset.x / CGRectGetWidth(scrollView.bounds) + 0.5) % bannerList!.count
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let page = Int(scrollView.contentOffset.x / scrollView.bounds.width + 0.5) % bannerList!.count
         pageControl.currentPage = page
     }
 }
 
 class ImageCarouselCell: UICollectionViewCell {
     
-    @IBOutlet private weak var imageView: UIImageView!
+    @IBOutlet fileprivate weak var imageView: UIImageView!
     
     var bannner: Banner? {
         didSet {
             if let urlStr = bannner?.imageUrl {
-                if let url = NSURL(string: urlStr) {
-                    imageView.kf_setImageWithURL(url)
+                if let url = URL(string: urlStr) {
+                    imageView.kf.setImage(with: url)
                 }
             }
         }

@@ -10,10 +10,10 @@ import UIKit
 import Kingfisher
 
 enum HomeCollectionViewCellButtonType: Int {
-    case Tag     // tag
-    case Chat    // 私聊
-    case Comment // 评论
-    case Star    // star
+    case tag     // tag
+    case chat    // 私聊
+    case comment // 评论
+    case star    // star
 }
 
 protocol HomeCollectionViewCellDelegate: NSObjectProtocol {
@@ -26,98 +26,108 @@ protocol HomeCollectionViewCellDelegate: NSObjectProtocol {
      - parameter btnType:  按钮类型
      - parameter topiInfo: 数据模型
      */
-    func homeCollectionViewCell(cell: HomeCollectionViewCell, didClickButton button: UIButton, withButtonType btnType: HomeCollectionViewCellButtonType, withTopiInfo topiInfo: TopicInfo)
+    func homeCollectionViewCell(_ cell: HomeCollectionViewCell, didClickButton button: UIButton, withButtonType btnType: HomeCollectionViewCellButtonType, withTopiInfo topiInfo: TopicInfo)
 }
 
 class HomeCollectionViewCell: UICollectionViewCell {
     
     /// 背景图片
-    @IBOutlet private weak var bgImageView: UIImageView!
+    @IBOutlet fileprivate weak var bgImageView: UIImageView!
     /// 头像按钮
-    @IBOutlet private weak var headButton: UIButton!
+    @IBOutlet fileprivate weak var headButton: UIButton!
     /// icon标识
-    @IBOutlet private weak var headIcon: UIButton!
+    @IBOutlet fileprivate weak var headIcon: UIButton!
     /// tag标签按钮
-    @IBOutlet private weak var tagButton: UIButton!
+    @IBOutlet fileprivate weak var tagButton: UIButton!
     /// 描述文字Label
-    @IBOutlet private weak var describeLabel: UILabel!
+    @IBOutlet fileprivate weak var describeLabel: UILabel!
     /// 月label
-    @IBOutlet private weak var monthLabel: UILabel!
+    @IBOutlet fileprivate weak var monthLabel: UILabel!
     /// 日label
-    @IBOutlet private weak var dayLabel: UILabel!
+    @IBOutlet fileprivate weak var dayLabel: UILabel!
     /// 年label
-    @IBOutlet private weak var yearLabel: UILabel!
+    @IBOutlet fileprivate weak var yearLabel: UILabel!
     /// 底部工具条
-    @IBOutlet private weak var toolbarView: ToolbarView!
+    @IBOutlet fileprivate weak var toolbarView: ToolbarView!
     /// 评论按钮
-    @IBOutlet private weak var commentButton: UIButton!
+    @IBOutlet fileprivate weak var commentButton: UIButton!
     /// star按钮
-    @IBOutlet private weak var starButton: UIButton!
+    @IBOutlet fileprivate weak var starButton: UIButton!
     
     weak var delegate: HomeCollectionViewCellDelegate?
     
     var topiInfo: TopicInfo? {
         didSet {
             if let bgImageUrlStr = topiInfo?.resUrl {
-                if let bgImageUrl = NSURL(string: bgImageUrlStr) {
-                    bgImageView.kf_setImageWithURL(bgImageUrl)
+                if let bgImageUrl = URL(string: bgImageUrlStr) {
+                    bgImageView.kf.setImage(with: bgImageUrl)
                 }
             }
             
             if let headUrlStr = topiInfo?.userInfo?.headUrl {
                 let img = UIImage(named: "home_head")
-                if let headUrl = NSURL(string: headUrlStr) {
-                    headButton.kf_setBackgroundImageWithURL(headUrl, forState: .Normal, placeholderImage: img)
+                if let headUrl = URL(string: headUrlStr) {
+                    headButton.kf.setBackgroundImage(with: headUrl, for: .normal, placeholder: img)
                 }else {
-                    headButton.setImage(img, forState: .Normal)
+                    headButton.setImage(img, for: UIControlState())
                 }
             }
             
             if let userHeat = topiInfo?.userInfo?.heat {
                 if userHeat == 1 {
-                    headIcon.hidden = false
-                    headIcon.setImage(UIImage(named: "home_head_star"), forState: .Normal)
+                    headIcon.isHidden = false
+                    headIcon.setImage(UIImage(named: "home_head_star"), for: UIControlState())
                 }else {
-                    headIcon.hidden = true
+                    headIcon.isHidden = true
                 }
             }
             
             if let tagTitle = topiInfo?.subjectTitle {
                 if tagTitle != "" {
-                    tagButton.hidden = false
-                    tagButton.setTitle("  #\(tagTitle)  " , forState: .Normal)
+                    tagButton.isHidden = false
+                    tagButton.setTitle("  #\(tagTitle)  " , for: UIControlState())
                 }else {
-                    tagButton.hidden = true
+                    tagButton.isHidden = true
                 }
             }
             
             describeLabel.text = topiInfo?.content
             
             if let pubTime = topiInfo?.pubTime {
-                let pubDate = NSDate(timeIntervalSince1970: NSTimeInterval(pubTime)! / 1000.0)
-                var components = kCalendar.components(.Month, fromDate: pubDate)
-                monthLabel.text = "\(components.month)月"
-                components = kCalendar.components(.Day, fromDate: pubDate)
-                dayLabel.text = "\(components.day)"
-                components = kCalendar.components(.Year, fromDate: pubDate)
-                yearLabel.text = "\(components.year)"
+                let pubDate = Date(timeIntervalSince1970: TimeInterval(pubTime)! / 1000.0)
+                var components = (kCalendar as NSCalendar).components(.month, from: pubDate)
+                if let month = components.month {
+                    monthLabel.text = "\(month)月"
+                }
+                
+                components = (kCalendar as NSCalendar).components(.day, from: pubDate)
+                if let day = components.day {
+                    dayLabel.text = "\(day)"
+                }
+                
+                components = (kCalendar as NSCalendar).components(.year, from: pubDate)
+                if let year = components.year {
+                    yearLabel.text = "\(year)"
+                }
             }
             
             if let commentNum = topiInfo?.commentCnt {
-                if Int(commentNum) > 999 {
-                    commentButton.setTitle("999+", forState: .Normal)
-                }else if Int(commentNum) == 0 {
-                    commentButton.setTitle("评论", forState: .Normal)
-                }else {
-                    commentButton.setTitle("\(commentNum)", forState: .Normal)
+                if let `commentNum` = Int(commentNum) {
+                    if `commentNum` > 999 {
+                        commentButton.setTitle("999+", for: UIControlState())
+                    }else if `commentNum` == 0 {
+                        commentButton.setTitle("评论", for: UIControlState())
+                    }else {
+                        commentButton.setTitle("\(commentNum)", for: UIControlState())
+                    }
                 }
             }
             
             if let starNum = topiInfo?.praiseCnt {
-                if Int(starNum) > 999 {
-                    starButton.setTitle("999+", forState: .Normal)
+                if starNum > 999 {
+                    starButton.setTitle("999+", for: UIControlState())
                 }else {
-                    starButton.setTitle("\(starNum)", forState: .Normal)
+                    starButton.setTitle("\(starNum)", for: UIControlState())
                 }
             }
         }
@@ -131,15 +141,15 @@ class HomeCollectionViewCell: UICollectionViewCell {
     }
     
     /// 按钮点击事件
-    @IBAction func buttonClick(sender: UIButton) {
+    @IBAction func buttonClick(_ sender: UIButton) {
         delegate?.homeCollectionViewCell(self, didClickButton: sender, withButtonType: HomeCollectionViewCellButtonType(rawValue: sender.tag)!, withTopiInfo: topiInfo!)
     }
 }
 
 class ToolbarView: UIView {
-    override func drawRect(rect: CGRect) {
-        let path = UIBezierPath(rect: CGRectMake(0, 0, bounds.size.width, 0.2))
-        UIColor.lightGrayColor().setFill()
+    override func draw(_ rect: CGRect) {
+        let path = UIBezierPath(rect: CGRect(x: 0, y: 0, width: bounds.size.width, height: 0.2))
+        UIColor.lightGray.setFill()
         path.fill()
     }
 }

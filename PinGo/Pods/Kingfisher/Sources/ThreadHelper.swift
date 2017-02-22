@@ -4,7 +4,7 @@
 //
 //  Created by Wei Wang on 15/10/9.
 //
-//  Copyright (c) 2016 Wei Wang <onevcat@gmail.com>
+//  Copyright (c) 2017 Wei Wang <onevcat@gmail.com>
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -26,12 +26,15 @@
 
 import Foundation
 
-func dispatch_async_safely_main_queue(block: ()->()) {
-    if NSThread.isMainThread() {
-        block()
-    } else {
-        dispatch_async(dispatch_get_main_queue()) {
+extension DispatchQueue {
+    // This method will dispatch the `block` to self.
+    // If `self` is the main queue, and current thread is main thread, the block
+    // will be invoked immediately instead of being dispatched.
+    func safeAsync(_ block: @escaping ()->()) {
+        if self === DispatchQueue.main && Thread.isMainThread {
             block()
+        } else {
+            async { block() }
         }
     }
 }

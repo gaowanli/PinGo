@@ -12,11 +12,11 @@ enum dateFormatStyle: String {
     case Style1 = "yyyy-MM-dd"
 }
 
-extension NSDate {
+extension Date {
     
-    class func formatterWithStyle(withStyle style: dateFormatStyle) -> NSDateFormatter {
+    static func formatterWithStyle(withStyle style: dateFormatStyle) -> DateFormatter {
         let formatter = kDateFormatter
-        formatter.locale = NSLocale.currentLocale()
+        formatter.locale = Locale.current
         formatter.dateFormat = style.rawValue
         return formatter
     }
@@ -28,9 +28,9 @@ extension NSDate {
      
      - returns: 日期
      */
-    class func dateWithTimeStamp(stamp: String) -> NSDate? {
-        if let interval = NSTimeInterval(stamp) {
-            return NSDate(timeIntervalSince1970: interval / 1000.0)
+    static func dateWithTimeStamp(_ stamp: String) -> Date? {
+        if let interval = TimeInterval(stamp) {
+            return Date(timeIntervalSince1970: interval / 1000.0)
         }
         return nil
     }
@@ -43,8 +43,8 @@ extension NSDate {
     func string(withStyle style: dateFormatStyle) -> String? {
         switch style {
         case .Style1:
-            let formatter = NSDate.formatterWithStyle(withStyle: style)
-            return formatter.stringFromDate(self)
+            let formatter = Date.formatterWithStyle(withStyle: style)
+            return formatter.string(from: self)
         }
     }
     
@@ -55,10 +55,10 @@ extension NSDate {
      */
     func isThisYear() -> Bool {
         let calendar = kCalendar
-        let unit = NSCalendarUnit.Year
+        let unit = NSCalendar.Unit.year
         
-        let nowCmps = calendar.components(unit, fromDate: NSDate())
-        let dCmps = calendar.components(unit, fromDate: self)
+        let nowCmps = (calendar as NSCalendar).components(unit, from: Date())
+        let dCmps = (calendar as NSCalendar).components(unit, from: self)
         return nowCmps.year == dCmps.year
     }
     
@@ -69,10 +69,10 @@ extension NSDate {
      */
     func isToday() -> Bool {
         let calendar = kCalendar
-        let unit: NSCalendarUnit = [.Day, .Month, .Year]
+        let unit: NSCalendar.Unit = [.day, .month, .year]
         
-        let nowCmps = calendar.components(unit, fromDate: NSDate())
-        let dCmps = calendar.components(unit, fromDate: self)
+        let nowCmps = (calendar as NSCalendar).components(unit, from: Date())
+        let dCmps = (calendar as NSCalendar).components(unit, from: self)
         return nowCmps.day == dCmps.day && nowCmps.month == dCmps.month && nowCmps.year == dCmps.year
     }
     
@@ -82,18 +82,18 @@ extension NSDate {
      - returns: true of false
      */
     func isYestoday() -> Bool {
-        return kCalendar.components(.Day, fromDate: self.dateFormat(), toDate: NSDate().dateFormat(), options: []).day == 1
+        return (kCalendar as NSCalendar).components(.day, from: self.dateFormat(), to: Date().dateFormat(), options: []).day == 1
     }
     
-    func componentsDeltaWithNow() -> NSDateComponents {
+    func componentsDeltaWithNow() -> DateComponents {
         let calendar = kCalendar
-        let unit: NSCalendarUnit = [.Day, .Hour, .Minute]
-        return calendar.components(unit, fromDate: self, toDate: NSDate(), options: [])
+        let unit: NSCalendar.Unit = [.day, .hour, .minute]
+        return (calendar as NSCalendar).components(unit, from: self, to: Date(), options: [])
     }
     
-    private func dateFormat() -> NSDate {
-        let formatter = NSDate.formatterWithStyle(withStyle: .Style1)
-        let dateStr = formatter.stringFromDate(self)
-        return formatter.dateFromString(dateStr)!
+    fileprivate func dateFormat() -> Date {
+        let formatter = Date.formatterWithStyle(withStyle: .Style1)
+        let dateStr = formatter.string(from: self)
+        return formatter.date(from: dateStr)!
     }
 }

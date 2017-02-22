@@ -12,10 +12,10 @@ private let kCellReuseIdentifier = "topicCell"
 
 class TopicController: UIViewController {
     
-    @IBOutlet private weak var tableViewHeaderView: UIView!
-    @IBOutlet private weak var tableView: UITableView!
+    @IBOutlet fileprivate weak var tableViewHeaderView: UIView!
+    @IBOutlet fileprivate weak var tableView: UITableView!
     
-    private var headerView: TopicHeaderView!
+    fileprivate var headerView: TopicHeaderView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,7 +24,7 @@ class TopicController: UIViewController {
         tableViewHeaderView.addSubview(headerView!)
         tableView.rowHeight = 170.0
         
-        Banner.fetchBannerList(type: .Square) { [weak self] (bannerList) in
+        Banner.fetchBannerList(type: .square) { [weak self] (bannerList) in
             if let strongSelf = self {
                 if bannerList != nil {
                     strongSelf.headerView.bannerList = bannerList
@@ -47,27 +47,27 @@ class TopicController: UIViewController {
     }
     
     // MARK: lazy loading
-    private lazy var headerViewTextList: [String] = {
+    fileprivate lazy var headerViewTextList: [String] = {
         return ["热门照片", "附近照片", "最新照片"]
     }()
     
-    private lazy var dataList: [TopicInfo] = {
+    fileprivate lazy var dataList: [TopicInfo] = {
         return [TopicInfo]()
     }()
 }
 
 extension TopicController: UITableViewDataSource, UITableViewDelegate {
     
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return dataList.count > 0 ? headerViewTextList.count : 0
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(kCellReuseIdentifier, forIndexPath: indexPath) as! TopicCell
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: kCellReuseIdentifier, for: indexPath) as! TopicCell
         cell.headerViewText = headerViewTextList[indexPath.section]
         
         // 将所有的数据分成x份 x = headerViewTextList.count
@@ -81,7 +81,7 @@ extension TopicController: UITableViewDataSource, UITableViewDelegate {
         return cell
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
     }
 }

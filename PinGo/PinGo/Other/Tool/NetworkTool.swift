@@ -18,15 +18,15 @@ class NetworkTool: NSObject {
      *  @param parameters    参数字典
      *  @param completion    完成回调，返回NetworkResponse
      */
-    class func requestJSON(method: Alamofire.Method, URLString: String, parameters: [String: AnyObject]? = nil, completion:(response: NetworkResponse?) -> ()) {
-        Alamofire.request(method, URLString, parameters: parameters, encoding: .URL, headers: nil).responseJSON { (JSON) in
+    class func requestJSON(_ method: HTTPMethod, URLString: String, parameters: [String: AnyObject]? = nil, completion:@escaping (_ response: NetworkResponse?) -> ()) {
+        Alamofire.request(URLString, method: method, parameters: parameters, encoding: JSONEncoding.default).validate().responseJSON { (JSON) in
             switch JSON.result {
-            case .Success:
+            case .success:
                 if let value = JSON.result.value {
                     let nResponse = NetworkResponse(dict: value as! [String : AnyObject])
-                    completion(response: nResponse)
+                    completion(nResponse)
                 }
-            case .Failure(let error):
+            case .failure(let error):
                 debugPrint(error)
             }
         }

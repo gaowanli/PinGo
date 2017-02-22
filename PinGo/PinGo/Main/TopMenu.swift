@@ -15,19 +15,19 @@ protocol TopMenuDelegate: NSObjectProtocol {
      - parameter topMenu: topMenu
      - parameter index:   按钮index
      */
-    func topMenu(topMenu: TopMenu, didClickButton index: Int)
+    func topMenu(_ topMenu: TopMenu, didClickButton index: Int)
 }
 
 class TopMenu: UIView {
     
     @IBOutlet var buttons: [DHButton]!
-    @IBOutlet private weak var indicatorLabel: UILabel!
+    @IBOutlet fileprivate weak var indicatorLabel: UILabel!
     weak var delegate: TopMenuDelegate?
     
     var showText: (String, String)? {
         didSet {
-            buttons[0].setTitle("\(showText!.0)", forState: .Normal)
-            buttons[1].setTitle("\(showText!.1)", forState: .Normal)
+            buttons[0].setTitle("\(showText!.0)", for: UIControlState())
+            buttons[1].setTitle("\(showText!.1)", for: UIControlState())
         }
     }
     
@@ -38,13 +38,13 @@ class TopMenu: UIView {
             }
             var center = indicatorLabel.center
             center.x = buttons[toIndex].center.x
-            UIView.animateWithDuration(0.25, delay: 0.0, usingSpringWithDamping: 0.8, initialSpringVelocity: 5.0, options: [], animations: {
+            UIView.animate(withDuration: 0.25, delay: 0.0, usingSpringWithDamping: 0.8, initialSpringVelocity: 5.0, options: [], animations: {
                 self.indicatorLabel.center = center
                 }, completion: nil)
         }
     }
     
-    @IBAction func buttonClick(sender: DHButton) {
+    @IBAction func buttonClick(_ sender: DHButton) {
         let index = sender.tag
         guard index != toIndex else {
             return
@@ -54,6 +54,6 @@ class TopMenu: UIView {
     }
     
     class func loadFromNib() -> TopMenu {
-        return NSBundle.mainBundle().loadNibNamed("TopMenu", owner: self, options: nil).last as! TopMenu
+        return Bundle.main.loadNibNamed("TopMenu", owner: self, options: nil)!.last as! TopMenu
     }
 }

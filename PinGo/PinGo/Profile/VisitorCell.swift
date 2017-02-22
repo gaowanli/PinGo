@@ -11,15 +11,15 @@ import UIKit
 class VisitorCell: UITableViewCell {
     
     /// 用户头像
-    @IBOutlet private weak var headIcon: UIImageView!
+    @IBOutlet fileprivate weak var headIcon: UIImageView!
     /// 昵称
-    @IBOutlet private weak var nickNameLabel: UILabel!
+    @IBOutlet fileprivate weak var nickNameLabel: UILabel!
     /// 性别&年龄
-    @IBOutlet private weak var sexAgeButton: UIButton!
+    @IBOutlet fileprivate weak var sexAgeButton: UIButton!
     /// 星座
-    @IBOutlet private weak var constellationButton: UIButton!
+    @IBOutlet fileprivate weak var constellationButton: UIButton!
     /// 到访时间
-    @IBOutlet private weak var visitorTimeLabel: UILabel!
+    @IBOutlet fileprivate weak var visitorTimeLabel: UILabel!
     
     var visitorRecord: VisitorRecord? {
         didSet {
@@ -27,8 +27,8 @@ class VisitorCell: UITableViewCell {
             
             let img = UIImage(named: "home_head")
             if let headUrlStr = user?.headUrl {
-                if let headUrl = NSURL(string: headUrlStr) {
-                    headIcon.kf_setImageWithURL(headUrl, placeholderImage: img)
+                if let headUrl = URL(string: headUrlStr) {
+                    headIcon.kf.setImage(with: headUrl, placeholder: img)
                 }else {
                     headIcon.image = img
                 }
@@ -38,17 +38,13 @@ class VisitorCell: UITableViewCell {
             
             nickNameLabel.text = user?.nickname
             if let age = user?.age {
-                sexAgeButton.setTitle("\(age)", forState: .Normal)
-            }
-            
-            if let constellation = user?.constellation {
-                constellationButton.setTitle(constellation, forState: .Normal)
-            }
+                sexAgeButton.setTitle("\(age)", for: UIControlState())
+            } 
             
             if user?.sex == 1 {
-                sexAgeButton.setImage(UIImage(named: "woman_icon"), forState: .Normal)
+                sexAgeButton.setImage(UIImage(named: "woman_icon"), for: UIControlState())
             }else {
-                sexAgeButton.setImage(UIImage(named: "man_icon"), forState: .Normal)
+                sexAgeButton.setImage(UIImage(named: "man_icon"), for: UIControlState())
             }
             
             if let visitTime = visitorRecord?.visitTime {

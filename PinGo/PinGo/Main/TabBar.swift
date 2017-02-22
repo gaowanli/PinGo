@@ -15,14 +15,14 @@ protocol TabBarDelegate: NSObjectProtocol {
      - parameter tabBar: tabBar
      - parameter index:  按钮index
      */
-    func tabBar(tabBar: TabBar, didClickButton index: Int)
+    func tabBar(_ tabBar: TabBar, didClickButton index: Int)
 }
 
 class TabBar: UITabBar {
     
     weak var aDelegate: TabBarDelegate?
     /// 当前选中的按钮
-    private var selButton: DHButton?
+    fileprivate var selButton: DHButton?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -39,12 +39,12 @@ class TabBar: UITabBar {
         }
     }
     
-    private func buttonWithImageName(imageName: String) -> DHButton {
-        let b = DHButton(type: .Custom)
+    fileprivate func buttonWithImageName(_ imageName: String) -> DHButton {
+        let b = DHButton(type: .custom)
         let sImageName = imageName + "_sel"
-        b.setImage(UIImage(named: imageName), forState: .Normal)
-        b.setImage(UIImage(named: sImageName), forState: .Selected)
-        b.addTarget(self, action: "buttonClick:", forControlEvents: .TouchDown)
+        b.setImage(UIImage(named: imageName), for: UIControlState())
+        b.setImage(UIImage(named: sImageName), for: .selected)
+        b.addTarget(self, action: #selector(TabBar.buttonClick(_:)), for: .touchDown)
         return b
     }
     
@@ -52,23 +52,23 @@ class TabBar: UITabBar {
         super.layoutSubviews()
         
         let count = buttons.count
-        let w = CGRectGetWidth(bounds) / CGFloat(count)
-        let h = CGRectGetHeight(bounds)
+        let w = bounds.width / CGFloat(count)
+        let h = bounds.height
         
-        let frame = CGRectMake(0, 0, w, h)
+        let frame = CGRect(x: 0, y: 0, width: w, height: h)
         for b in buttons {
-            b.frame = CGRectOffset(frame, CGFloat(b.tag) * w, 0)
+            b.frame = frame.offsetBy(dx: CGFloat(b.tag) * w, dy: 0)
         }
     }
     
-    func buttonClick(button: DHButton) {
+    func buttonClick(_ button: DHButton) {
         guard selButton != button else {
             return
         }
         
         if button.tag != 2 {
-            selButton?.selected = false
-            button.selected = true
+            selButton?.isSelected = false
+            button.isSelected = true
             selButton = button
         }
         
@@ -76,11 +76,11 @@ class TabBar: UITabBar {
     }
     
     // MARK: lazy loading
-    private lazy var btnImages: [String] = {
+    fileprivate lazy var btnImages: [String] = {
         return ["tabbar_home", "tabbar_discover", "tabbar_show", "tabbar_message", "tabbar_profile"]
     }()
     
-    private lazy var buttons: [UIButton] = {
+    fileprivate lazy var buttons: [UIButton] = {
         return [UIButton]()
     }()
 }

@@ -15,7 +15,7 @@ class ShowController: UIViewController {
 
     }
  
-    @IBAction func closeButtonClick(sender: UIBarButtonItem) {
-        dismissViewControllerAnimated(true, completion: nil)
+    @IBAction func closeButtonClick(_ sender: UIBarButtonItem) {
+        dismiss(animated: true, completion: nil)
     } 
 }

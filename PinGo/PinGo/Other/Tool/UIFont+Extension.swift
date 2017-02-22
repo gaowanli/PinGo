@@ -17,10 +17,10 @@ extension UIFont {
      
      - returns: 返回自定义的字体
      */
-    class func fontWithSize(size: CGFloat) -> UIFont {
+    class func fontWithSize(_ size: CGFloat) -> UIFont {
         if let font = UIFont.init(name: "BigYoungMediumGB2.0", size: size) {
             return font
         }
-        return UIFont.systemFontOfSize(size)
+        return UIFont.systemFont(ofSize: size)
     }
 }

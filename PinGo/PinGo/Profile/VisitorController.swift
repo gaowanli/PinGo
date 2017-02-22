@@ -24,35 +24,35 @@ class VisitorController: UITableViewController {
         }
     }
     
-    override func preferredStatusBarStyle() -> UIStatusBarStyle {
-        return .LightContent
+    override var preferredStatusBarStyle : UIStatusBarStyle {
+        return .lightContent
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         navigationController?.setNavigationBarHidden(false, animated: true)
     }
     
     // MARK: lazy loading
-    private lazy var dataList: [VisitorRecord] = {
+    fileprivate lazy var dataList: [VisitorRecord] = {
         return [VisitorRecord]()
     }()
 }
 
 // MARK: - Table view data source
 extension VisitorController {
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return dataList.count
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("VisitorCell", forIndexPath: indexPath) as! VisitorCell
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "VisitorCell", for: indexPath) as! VisitorCell
         cell.visitorRecord = dataList[indexPath.row]
         return cell
     }
     
-    override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         guard section == 0 else {
             return nil
         }
@@ -64,7 +64,7 @@ extension VisitorController {
         let headerView = VisitorHeaderView.loadFromNib()
         let todayVisitor = dataList.filter {
             if let visitTime = $0.visitTime {
-                if let date = NSDate.dateWithTimeStamp(visitTime) {
+                if let date = Date.dateWithTimeStamp(visitTime) {
                     return date.isToday()
                 }
             }
